@@ -25,4 +25,4 @@ jobs:
 
       - name: Transform ontologies
         run: |
-          $(riot --syntax TTL --output NT ontology/example.ttl) > example.nt
+          $(apache-jena-4.2.0/bin/riot --syntax TTL --output NT ontology/example.ttl) > example.nt
