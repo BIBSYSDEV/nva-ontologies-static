@@ -26,7 +26,6 @@ jobs:
       - name: Transform ontologies
         run: |
           mkdir public
-          FILES=
           for file in ontology/*.ttl
           do
             file_no_path=$(basename -- "$file")
