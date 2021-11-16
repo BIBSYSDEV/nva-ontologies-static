@@ -1,0 +1,2 @@
+@prefix : <https://example.org/ontology#> .
+<https://example.org> a :Class .
