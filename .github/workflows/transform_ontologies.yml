@@ -25,4 +25,4 @@ jobs:
 
       - name: Transform ontologies
         run: |
-          $(java -cp riot --syntax=TTL --output=NT ontology/example.ttl) > example.nt
+          $(java -cp riot --syntax TTL --output NT ontology/example.ttl) > example.nt
