@@ -27,4 +27,4 @@ jobs:
         run: |
           pwd
           ls
-          apache-jena-4.2.0/bin/riot --syntax TTL --output NT --check=false ./ontology/example.ttl > example.nt
+          apache-jena-4.2.0/bin/riot --syntax TTL --output NT --check=false ontology/example.ttl > example.nt
