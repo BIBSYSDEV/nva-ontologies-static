@@ -26,7 +26,8 @@ jobs:
       - name: Transform ontologies
         run: |
           mkdir public
-          for file in "ontology/*"
+          FILES=
+          for file in ontology/*.ttl
           do
             filename="${file%.*}"
             apache-jena-4.2.0/bin/riot --output=NT file > public/$filename.nt
