@@ -25,5 +25,9 @@ jobs:
 
       - name: Transform ontologies
         run: |
-          ls ontology
-          apache-jena-4.2.0/bin/riot --output=NT ontology/example.ttl > output.nt
+          mkdir public
+          apache-jena-4.2.0/bin/riot --output=NT ontology/example.ttl > public/output.nt
+          apache-jena-4.2.0/bin/riot --output=TURTLE ontology/example.ttl > public/output.ttl
+          apache-jena-4.2.0/bin/riot --output=RDFXML ontology/example.ttl > public/output.rdf
+          apache-jena-4.2.0/bin/riot --output=JSONLD ontology/example.ttl > public/output.json
+          ls public
