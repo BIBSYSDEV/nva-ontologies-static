@@ -30,9 +30,13 @@ jobs:
           do
             file_no_path=$(basename -- "$file")
             filename="${file_no_path%.*}"
-            apache-jena-4.2.0/bin/riot --output=NT $file > public/$filename.nt
-            apache-jena-4.2.0/bin/riot --output=TURTLE $file > public/$filename.ttl
-            apache-jena-4.2.0/bin/riot --output=RDFXML $file > public/$filename.rdf
-            apache-jena-4.2.0/bin/riot --output=JSONLD $file > public/$filename.json
+            apache-jena-4.2.0/bin/riot --output=NT $file > lambda/src/public/$filename.nt
+            apache-jena-4.2.0/bin/riot --output=TURTLE $file > lambda/src/public/$filename.ttl
+            apache-jena-4.2.0/bin/riot --output=RDFXML $file > lambda/src/public/$filename.rdf
+            apache-jena-4.2.0/bin/riot --output=JSONLD $file > lambda/src/public/$filename.json
           done
-          ls public
+
+      - name: Test lambda
+      - uses: volta-cli/action@v1
+      - run: npm ci
+      - run: npm run coverage
