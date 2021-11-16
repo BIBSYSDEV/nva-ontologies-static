@@ -5,7 +5,7 @@ name: Ontology transformation
 on: [push,pull_request]
 
 jobs:
-  build:
+  setup:
 
     runs-on: ubuntu-latest
 
@@ -37,6 +37,5 @@ jobs:
           done
 
       - name: Test lambda
-      - uses: volta-cli/action@v1
-      - run: npm ci
-      - run: npm run coverage
+        uses: volta-cli/action@v1
+        run: npm ci && npm run coverage
