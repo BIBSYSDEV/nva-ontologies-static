@@ -29,7 +29,8 @@ jobs:
           FILES=
           for file in ontology/*.ttl
           do
-            filename="${file%.*}"
+            file_no_path=$(basename -- "$file")
+            filename="${file_no_path%.*}"
             apache-jena-4.2.0/bin/riot --output=NT file > public/$filename.nt
             apache-jena-4.2.0/bin/riot --output=TURTLE file > public/$filename.ttl
             apache-jena-4.2.0/bin/riot --output=RDFXML file > public/$filename.rdf
