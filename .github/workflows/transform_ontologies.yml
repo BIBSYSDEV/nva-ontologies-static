@@ -26,8 +26,12 @@ jobs:
       - name: Transform ontologies
         run: |
           mkdir public
-          apache-jena-4.2.0/bin/riot --output=NT ontology/example.ttl > public/output.nt
-          apache-jena-4.2.0/bin/riot --output=TURTLE ontology/example.ttl > public/output.ttl
-          apache-jena-4.2.0/bin/riot --output=RDFXML ontology/example.ttl > public/output.rdf
-          apache-jena-4.2.0/bin/riot --output=JSONLD ontology/example.ttl > public/output.json
+          for file in "ontology/*"
+          do
+            filename="${file%.*}"
+            apache-jena-4.2.0/bin/riot --output=NT file > public/$filename.nt
+            apache-jena-4.2.0/bin/riot --output=TURTLE file > public/$filename.ttl
+            apache-jena-4.2.0/bin/riot --output=RDFXML file > public/$filename.rdf
+            apache-jena-4.2.0/bin/riot --output=JSONLD file > public/$filename.json
+          done
           ls public
