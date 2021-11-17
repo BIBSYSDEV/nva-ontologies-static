@@ -25,7 +25,7 @@ jobs:
 
       - name: Transform ontologies
         run: |
-          mkdir public
+          mkdir -p lambda/src/public
           for file in ontology/*.ttl
           do
             file_no_path=$(basename -- "$file")
