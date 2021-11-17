@@ -40,4 +40,4 @@ jobs:
         uses: volta-cli/action@v1
 
       - name: Test node
-        run: npm ci && npm run coverage
+        run: cd lambda && npm ci && npm run coverage
