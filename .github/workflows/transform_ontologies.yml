@@ -5,7 +5,7 @@ name: Ontology transformation
 on: [push,pull_request]
 
 jobs:
-  build:
+  setup:
 
     runs-on: ubuntu-latest
 
@@ -25,14 +25,19 @@ jobs:
 
       - name: Transform ontologies
         run: |
-          mkdir public
+          mkdir -p lambda/src/public
           for file in ontology/*.ttl
           do
             file_no_path=$(basename -- "$file")
             filename="${file_no_path%.*}"
-            apache-jena-4.2.0/bin/riot --output=NT $file > public/$filename.nt
-            apache-jena-4.2.0/bin/riot --output=TURTLE $file > public/$filename.ttl
-            apache-jena-4.2.0/bin/riot --output=RDFXML $file > public/$filename.rdf
-            apache-jena-4.2.0/bin/riot --output=JSONLD $file > public/$filename.json
+            apache-jena-4.2.0/bin/riot --output=NT $file > lambda/src/public/$filename.nt
+            apache-jena-4.2.0/bin/riot --output=TURTLE $file > lambda/src/public/$filename.ttl
+            apache-jena-4.2.0/bin/riot --output=RDFXML $file > lambda/src/public/$filename.rdf
+            apache-jena-4.2.0/bin/riot --output=JSONLD $file > lambda/src/public/$filename.json
           done
-          ls public
+
+      - name: Setup node
+        uses: volta-cli/action@v1
+
+      - name: Test node
+        run: cd lambda && npm ci && npm run coverage
