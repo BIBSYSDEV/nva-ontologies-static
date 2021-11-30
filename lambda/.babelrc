@@ -1,7 +1,0 @@
-{
-  "presets": ["@babel/preset-env"],
-  "ignore":  ["**/*.test.mjs"],
-  "plugins": [
-    ["replace-import-extension", { "extMapping": { ".mjs": ".js" }}]
-  ]
-}
