@@ -37,6 +37,7 @@ jobs:
           done
 
       - name: Build with gradle
+        run: cd ontology-service
         uses: gradle/gradle-build-action@v2
         with:
           arguments: build
