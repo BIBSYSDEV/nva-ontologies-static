@@ -36,10 +36,8 @@ jobs:
             apache-jena-4.2.0/bin/riot --output=JSONLD $file > ontology-service/src/main/resources/$filename.json
           done
 
-      - name: Enter working dir for Java project
-        run: cd ontology-service
-
       - name: Build with gradle
         uses: gradle/gradle-build-action@v2
         with:
+          build-root-directory: ontology-service
           arguments: build
