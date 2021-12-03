@@ -23,13 +23,13 @@ paths:
         type: "AWS_PROXY"
       tags:
         - Ontology
-      summary: Get ontology by naame
+      summary: Get ontology by name
       description: Returns the requested ontology
       operationId: get
       parameters:
         - name: name
           in: path
-          description: name of the ontology to return
+          description: Name of the ontology to return
           required: true
           schema:
             type: string
