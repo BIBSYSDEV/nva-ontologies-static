@@ -1,0 +1,49 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: NVA Ontology service
+
+
+Globals:
+  Function:
+    Timeout: 10
+  Api:
+    Cors:
+      AllowMethods: "'GET,OPTIONS'"
+      AllowHeaders: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+      AllowOrigin: "'*'"
+
+Parameters:
+  CustomDomain:
+    Type: 'AWS::SSM::Parameter::Value<String>'
+    Description: Custom API to connect this lambda to
+    Default: CustomDomain
+  CustomDomainBasePath:
+    Type: String
+    Description: Base path mapping in CustomDomain
+    Default: ontology
+
+Resources:
+  ApiAccessLogGroup:
+    Type: AWS::Logs::LogGroup
+  PublicationChannelsApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      DefinitionBody:
+        'Fn::Transform':
+          Name: AWS::Include
+          Parameters:
+            Location: ./docs/ontology-service.yaml
+      AccessLogSetting:
+        DestinationArn: !GetAtt ApiAccessLogGroup.Arn
+        Format: '{ "apiId": "$context.apiId", "requestId": "$context.requestId", "requestTime": "$context.requestTime", "requestTimeEpoch": "$context.requestTimeEpoch", "httpMethod": "$context.httpMethod", "path": "$context.path", "status": "$context.status",  "error.message": "$context.error.message" }'
+      StageName: Prod
+      EndpointConfiguration: REGIONAL
+  OntologyService:
+    Type: AWS::Serverless::Function
+    Properties:
+      Timeout: 5
+      Handler: Provided
+      Runtime: provided
+      MemorySize: 512
+      Description: Ontology service
+      CodeUri: .ontology-service/build/libs/ontology-service-0.1-lambda.zip
