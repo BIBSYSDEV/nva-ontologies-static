@@ -30,14 +30,13 @@ jobs:
           do
             file_no_path=$(basename -- "$file")
             filename="${file_no_path%.*}"
-            apache-jena-4.2.0/bin/riot --output=NT $file > lambda/src/public/$filename.nt
-            apache-jena-4.2.0/bin/riot --output=TURTLE $file > lambda/src/public/$filename.ttl
-            apache-jena-4.2.0/bin/riot --output=RDFXML $file > lambda/src/public/$filename.rdf
-            apache-jena-4.2.0/bin/riot --output=JSONLD $file > lambda/src/public/$filename.json
+            apache-jena-4.2.0/bin/riot --output=NT $file > ontology-service/src/main/resources/$filename.nt
+            apache-jena-4.2.0/bin/riot --output=TURTLE $file > ontology-service/src/main/resources/$filename.ttl
+            apache-jena-4.2.0/bin/riot --output=RDFXML $file > ontology-service/src/main/resources/$filename.rdf
+            apache-jena-4.2.0/bin/riot --output=JSONLD $file > ontology-service/src/main/resources/$filename.json
           done
 
-      - name: Setup node
-        uses: volta-cli/action@v1
-
-      - name: Test node
-        run: cd lambda && npm ci && npm run coverage
+      - name: Build with gradle
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: build
