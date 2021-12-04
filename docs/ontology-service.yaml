@@ -1,0 +1,106 @@
+openapi: "3.0.3"
+info:
+  description: "NVA Ontology Service. Provides ontological content in different formats."
+  version: "1.0.0"
+  title: "NVA Ontology Service"
+  contact:
+    email: "support@unit.no"
+  license:
+    name: "MIT"
+    url: "https://opensource.org/licenses/MIT"
+servers:
+  - url: https://api.nva.unit.no/ontology
+  - url: https://api.test.nva.unit.no/ontology
+  - url: https://api.sandbox.nva.unit.no/ontology
+  - url: https://api.dev.nva.unit.no/ontology
+paths:
+  /ontology/{name}:
+    get:
+      x-amazon-apigateway-integration:
+        uri:
+          Fn::Sub: arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${OntologyService.Arn}/invocations
+        httpMethod: POST
+        type: "AWS_PROXY"
+      tags:
+        - Ontology
+      summary: Get ontology by name
+      description: Returns the requested ontology
+      operationId: get
+      parameters:
+        - name: name
+          in: path
+          description: Name of the ontology to return
+          required: true
+          schema:
+            type: string
+          example: 'nva'
+      responses:
+        200:
+          description: The requested ontology
+          content:
+            application/ntriples:
+              schema:
+                type: string
+            application/ld+json:
+              schema:
+                type: string
+            application/turtle:
+              schema:
+                type: string
+            application/rdf+xml:
+              schema:
+                type: string
+        404:
+          $ref: '#/components/responses/404'
+        405:
+          $ref: '#/components/responses/405'
+        406:
+          $ref: '#/components/responses/406'
+        500:
+          $ref: '#/components/responses/500'
+components:
+  responses:
+    404:
+      description: Not found
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Problem'
+    405:
+      description: Method Not Allowed
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Problem'
+    406:
+      description: Not Acceptable
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Problem'
+    500:
+      description: Internal Server Error
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/Problem'
+  schemas:
+    Problem:
+      type: object
+      properties:
+        type:
+          type: string
+          description: A URI describing the error and mitigations, in generic cases, this is about:blank
+        status:
+          type: integer
+          format: int32
+          description: The HTTP status code associated with the problem
+        title:
+          type: string
+          description: Human-readable description of the error status
+        detail:
+          type: string
+          description: A more detailed error message describing the error and potential mitigations
+        instance:
+          type: string
+          description: The requested path associated with the error
