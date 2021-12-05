@@ -13,6 +13,7 @@ phases:
         export JENA_HOME=apache-jena-4.2.0
         export PATH=$PATH:$JENA_HOME/bin
   pre_build:
+    on-failure: ABORT
     commands:
       - |
         mkdir -p lambda/src/public
