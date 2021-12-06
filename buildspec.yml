@@ -1,0 +1,43 @@
+version: 0.2
+
+phases:
+  install:
+    on-failure: ABORT
+    runtime-versions:
+      java: openjdk11
+    commands:
+      - pip3 install aws-sam-cli
+      - |
+        wget https://dlcdn.apache.org/jena/binaries/apache-jena-4.2.0.tar.gz
+        tar xzvf apache-jena-4.2.0.tar.gz
+        export JENA_HOME=apache-jena-4.2.0
+        export PATH=$PATH:$JENA_HOME/bin
+  pre_build:
+    on-failure: ABORT
+    commands:
+      - |
+        mkdir -p lambda/src/public
+        for file in ontology/*.ttl
+        do
+          file_no_path=$(basename -- "$file")
+          filename="${file_no_path%.*}"
+          apache-jena-4.2.0/bin/riot --output=NT $file > ontology-service/src/main/resources/$filename.nt
+          apache-jena-4.2.0/bin/riot --output=TURTLE $file > ontology-service/src/main/resources/$filename.ttl
+          apache-jena-4.2.0/bin/riot --output=RDFXML $file > ontology-service/src/main/resources/$filename.rdf
+          apache-jena-4.2.0/bin/riot --output=JSONLD $file > ontology-service/src/main/resources/$filename.json
+        done
+      - ./gradlew buildNativeLambda
+  build:
+      on-failure: ABORT
+      commands:
+      - sam build
+      - sam package --s3-bucket $S3_BUCKET --output-template-file packaged_raw.yaml
+  post_build:
+    on-failure: ABORT
+    commands:
+      # Use timestamp to force update of ApiGatewayCreateDeploymentCustomResource
+      - BUILD_TIMESTAMP=$(date '+%s')
+      - envsubst '${BUILD_TIMESTAMP}' < packaged_raw.yaml > packaged.yaml
+artifacts:
+  files:
+    - packaged.yaml
