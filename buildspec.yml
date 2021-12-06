@@ -13,7 +13,7 @@ phases:
         tar xzvf apache-jena-4.2.0.tar.gz
         export JENA_HOME=apache-jena-4.2.0
         export PATH=$PATH:$JENA_HOME/bin
-      - systemctl start docker
+      - $(which docker) start
       - nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock --host=tcp://127.0.0.1:2375 --storage-driver=overlay2&
       - timeout 15 sh -c "until docker info; do echo .; sleep 1; done"
   pre_build:
