@@ -15,11 +15,8 @@ phases:
   pre_build:
     on-failure: ABORT
     commands:
-      - wget https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-19.3.6/graalvm-ce-java11-linux-amd64-19.3.6.tar.gz
-      - tar -xzf graalvm-ce-java11-linux-amd64-19.3.6.tar.gz -C /tmp/
-      - rm -rf graalvm-ce-java11-linux-amd64-19.3.6.tar.gz
-      - export PATH=/tmp/graalvm-ce-java11-19.3.6/bin:$PATH
-      - gu install native-image
+      - nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock --host=tcp://127.0.0.1:2375 --storage-driver=overlay2&
+      - timeout 15 sh -c "until docker info; do echo .; sleep 1; done" `
       - |
         mkdir -p lambda/src/public
         for file in ontology/*.ttl
