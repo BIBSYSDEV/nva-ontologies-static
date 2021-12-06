@@ -16,9 +16,9 @@ phases:
     on-failure: ABORT
     commands:
       - wget https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-19.3.6/graalvm-ce-java11-linux-amd64-19.3.6.tar.gz
-      - tar -xzf graalvm-ce-java11-linux-amd64-21.0.0.2.tar.gz -C /tmp/
-      - rm -rf graalvm-ce-java11-linux-amd64-21.0.0.2.tar.gz
-      - export PATH=/tmp/graalvm-ce-java11-21.0.0.2/bin:$PATH
+      - tar -xzf graalvm-ce-java11-linux-amd64-19.3.6.tar.gz -C /tmp/
+      - rm -rf graalvm-ce-java11-linux-amd64-19.3.6.tar.gz
+      - export PATH=/tmp/graalvm-ce-java11-19.3.6/bin:$PATH
       - gu install native-image
       - |
         mkdir -p lambda/src/public
