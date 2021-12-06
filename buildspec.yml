@@ -26,7 +26,8 @@ phases:
           apache-jena-4.2.0/bin/riot --output=RDFXML $file > ontology-service/src/main/resources/$filename.rdf
           apache-jena-4.2.0/bin/riot --output=JSONLD $file > ontology-service/src/main/resources/$filename.json
         done
-      - ./ontology-service/gradlew buildNativeLambda
+      - cd ontology-service
+      - ./gradlew buildNativeLambda
   build:
       on-failure: ABORT
       commands:
