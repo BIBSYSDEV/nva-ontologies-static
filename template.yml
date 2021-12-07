@@ -32,7 +32,7 @@ Resources:
         'Fn::Transform':
           Name: AWS::Include
           Parameters:
-            Location: /docs/ontology-service.yaml
+            Location: docs/ontology-service.yaml
       AccessLogSetting:
         DestinationArn: !GetAtt ApiAccessLogGroup.Arn
         Format: '{ "apiId": "$context.apiId", "requestId": "$context.requestId", "requestTime": "$context.requestTime", "requestTimeEpoch": "$context.requestTimeEpoch", "httpMethod": "$context.httpMethod", "path": "$context.path", "status": "$context.status",  "error.message": "$context.error.message" }'
