@@ -36,8 +36,9 @@ phases:
   build:
       on-failure: ABORT
       commands:
-      - sam build
-      - sam package --s3-bucket $S3_BUCKET --output-template-file packaged_raw.yaml
+        - cd ..
+        - sam build
+        - sam package --s3-bucket $S3_BUCKET --output-template-file packaged_raw.yaml
   post_build:
     on-failure: ABORT
     commands:
