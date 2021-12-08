@@ -61,11 +61,3 @@ Resources:
             Action: ['sts:AssumeRole']
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
-
-  OntologyApiPermission:
-    Type: AWS::Lambda::Permission
-    Properties:
-      Action: "lambda:InvokeFunction"
-      FunctionName: !Ref OntologyService
-      Principal: "apigateway.amazonaws.com"
-      SourceArn: !GetAtt PublicationChannelsApi.Arn
