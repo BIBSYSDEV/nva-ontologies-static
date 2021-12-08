@@ -14,7 +14,7 @@ servers:
   - url: https://api.sandbox.nva.aws.unit.no/ontology
   - url: https://api.dev.nva.aws.unit.no/ontology
 paths:
-  /ontology/{name}:
+  /{name}:
     get:
       x-amazon-apigateway-integration:
         uri:
