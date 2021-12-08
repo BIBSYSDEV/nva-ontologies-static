@@ -54,7 +54,7 @@ Resources:
         GetEvent:
           Type: Api
           Properties:
-            Path: /{name}
+            Path: /{proxy+}
             Method: get
             RestApiId: !Ref OntologyApi
 
