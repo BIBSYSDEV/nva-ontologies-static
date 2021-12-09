@@ -27,7 +27,7 @@ public class OntologyControllerTest {
 
     private static MicronautLambdaHandler handler;
     private static final Context lambdaContext = new MockLambdaContext();
-    public static ObjectMapper objectMapper;
+    private static ObjectMapper objectMapper;
 
     @BeforeAll
     public static void setupSpec() {
@@ -47,7 +47,7 @@ public class OntologyControllerTest {
     }
 
     @Test
-    void shouldReturnTurtle() {
+    void shouldReturnTurtleWhenAcceptHeaderIsApplicationTurtle() {
         AwsProxyRequest request = new AwsProxyRequestBuilder("/test", HttpMethod.GET.toString())
                 .header(HttpHeaders.ACCEPT, "application/turtle")
                 .build();
@@ -57,7 +57,7 @@ public class OntologyControllerTest {
     }
 
     @Test
-    void shouldReturnNTriples() {
+    void shouldReturnNTriplesWhenAcceptHeaderIsApplicationNTriples() {
         AwsProxyRequest request = new AwsProxyRequestBuilder("/test", HttpMethod.GET.toString())
                 .header(HttpHeaders.ACCEPT, "application/ntriples")
                 .build();
@@ -68,7 +68,7 @@ public class OntologyControllerTest {
     }
 
     @Test
-    void shouldReturnNotFound() {
+    void shouldReturnNotFoundWhenRequestedResourceIsNotFound() {
         AwsProxyRequest request = new AwsProxyRequestBuilder("/not-found", HttpMethod.GET.toString())
                 .header(HttpHeaders.ACCEPT, "application/ntriples")
                 .build();
@@ -77,7 +77,7 @@ public class OntologyControllerTest {
     }
 
     @Test
-    void shouldReturnRdfXml() {
+    void shouldReturnRdfXmlWhenAcceptHeaderIsApplicationRdfXml() {
         AwsProxyRequest request = new AwsProxyRequestBuilder("/test", HttpMethod.GET.toString())
                 .header(HttpHeaders.ACCEPT, "application/rdf+xml")
                 .build();
@@ -88,7 +88,7 @@ public class OntologyControllerTest {
     }
 
     @Test
-    void shouldReturnJsonLd() {
+    void shouldReturnJsonLdWhenAcceptHeaderIsApplicationLdJson() {
         AwsProxyRequest request = new AwsProxyRequestBuilder("/test", HttpMethod.GET.toString())
                 .header(HttpHeaders.ACCEPT, "application/ld+json")
                 .build();
@@ -99,7 +99,7 @@ public class OntologyControllerTest {
     }
 
     @Test
-    void shouldReturnNotAcceptable() throws JsonProcessingException {
+    void shouldReturnNotAcceptableWhenHttpMethodIsNotGet() throws JsonProcessingException {
         AwsProxyRequest request = new AwsProxyRequestBuilder("/test", HttpMethod.GET.toString())
                 .header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON)
                 .build();
