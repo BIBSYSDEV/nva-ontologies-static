@@ -25,7 +25,7 @@ public class OntologyController {
     public static final String RDF = "rdf";
     public static final String JSONLD = "jsonld";
     public static final String PATH_PARAM_FILE = "{file}";
-    public static final String EXTENSION_SEPARATOR = ".";
+    public static final String EXTENSION_SEPERATOR = ".";
 
     private final ResourceLoader loader = new ResourceResolver().getLoader(ClassPathResourceLoader.class).orElseThrow();
 
@@ -50,7 +50,7 @@ public class OntologyController {
     }
 
     private String getResourceAsString(String file, String extension) throws IOException {
-        Optional<InputStream> inputStream = loader.getResourceAsStream(file + EXTENSION_SEPARATOR + extension);
+        Optional<InputStream> inputStream = loader.getResourceAsStream(file + EXTENSION_SEPERATOR + extension);
         if (inputStream.isPresent()) {
             return new String(inputStream.get().readAllBytes());
         }
