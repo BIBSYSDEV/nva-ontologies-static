@@ -2,7 +2,6 @@ package no.sikt.nva;
 import com.amazonaws.serverless.exceptions.ContainerInitializationException;
 import com.amazonaws.serverless.proxy.internal.testutils.AwsProxyRequestBuilder;
 import com.amazonaws.serverless.proxy.internal.testutils.MockLambdaContext;
-import com.amazonaws.serverless.proxy.model.AwsProxyRequest;
 import com.amazonaws.serverless.proxy.model.AwsProxyResponse;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -19,6 +18,10 @@ import org.zalando.problem.Problem;
 import org.zalando.problem.jackson.ProblemModule;
 
 import java.net.URI;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Optional;
 
 import static no.sikt.nva.OntologyController.APPLICATION_LD_JSON;
 import static no.sikt.nva.OntologyController.APPLICATION_NTRIPLES;
@@ -37,6 +40,11 @@ public class OntologyControllerTest {
     public static final String TEST_PATH = "/test";
     public static final String CONTENT_TYPE = "Content-Type";
     public static final String NOT_FOUND_PATH = "/not-found";
+    public static final String TEST_DATA_NOT_FOUND_ERROR = "Test data not found: ";
+    public static final String EXPECTED_TURTLE = readFileFromResources("test.ttl");
+    public static final String EXPECTED_NTRIPLES = readFileFromResources("test.nt");
+    public static final String EXPECTED_RDF_XML = readFileFromResources("test.rdf");
+    public static final String EXPECTED_LD_JSON = readFileFromResources("test.jsonld");
     private static MicronautLambdaHandler handler;
     private static final Context lambdaContext = new MockLambdaContext();
     private static ObjectMapper objectMapper;
@@ -60,63 +68,60 @@ public class OntologyControllerTest {
 
     @Test
     void shouldReturnTurtleWhenAcceptHeaderIsApplicationTurtle() {
-        AwsProxyRequest request = new AwsProxyRequestBuilder(TEST_PATH, HttpMethod.GET.toString())
+        var request = new AwsProxyRequestBuilder(TEST_PATH, HttpMethod.GET.toString())
                 .header(HttpHeaders.ACCEPT, APPLICATION_TURTLE)
                 .build();
-        AwsProxyResponse response = handler.handleRequest(request, lambdaContext);
+        var response = handler.handleRequest(request, lambdaContext);
         assertEquals(HttpStatus.OK.getCode(), response.getStatusCode());
-        assertEquals("_:b0 a \"test\" .", response.getBody());
+        assertEquals(EXPECTED_TURTLE, response.getBody());
     }
 
     @Test
     void shouldReturnNTriplesWhenAcceptHeaderIsApplicationNTriples() {
-        AwsProxyRequest request = new AwsProxyRequestBuilder(TEST_PATH, HttpMethod.GET.toString())
+        var request = new AwsProxyRequestBuilder(TEST_PATH, HttpMethod.GET.toString())
                 .header(HttpHeaders.ACCEPT, APPLICATION_NTRIPLES)
                 .build();
-        AwsProxyResponse response = handler.handleRequest(request, lambdaContext);
+        var response = handler.handleRequest(request, lambdaContext);
         assertEquals(HttpStatus.OK.getCode(), response.getStatusCode());
-        assertEquals("_:b0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> \"test\" .",
-                response.getBody());
+        assertEquals(EXPECTED_NTRIPLES, response.getBody());
     }
 
     @Test
     void shouldReturnRdfXmlWhenAcceptHeaderIsApplicationRdfXml() {
-        AwsProxyRequest request = new AwsProxyRequestBuilder(TEST_PATH, HttpMethod.GET.toString())
+        var request = new AwsProxyRequestBuilder(TEST_PATH, HttpMethod.GET.toString())
                 .header(HttpHeaders.ACCEPT, APPLICATION_RDF_XML)
                 .build();
-        AwsProxyResponse response = handler.handleRequest(request, lambdaContext);
+        var response = handler.handleRequest(request, lambdaContext);
         assertEquals(HttpStatus.OK.getCode(), response.getStatusCode());
-        assertEquals("<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" />",
-                response.getBody());
+        assertEquals(EXPECTED_RDF_XML, response.getBody());
     }
 
     @Test
     void shouldReturnJsonLdWhenAcceptHeaderIsApplicationLdJson() {
-        AwsProxyRequest request = new AwsProxyRequestBuilder(TEST_PATH, HttpMethod.GET.toString())
+        var request = new AwsProxyRequestBuilder(TEST_PATH, HttpMethod.GET.toString())
                 .header(HttpHeaders.ACCEPT, APPLICATION_LD_JSON)
                 .build();
-        AwsProxyResponse response = handler.handleRequest(request, lambdaContext);
+        var response = handler.handleRequest(request, lambdaContext);
         assertEquals(HttpStatus.OK.getCode(), response.getStatusCode());
-        assertEquals("{\"@context\": {\"@vocab\": \"https://example.org/\"}, \"name\": \"test\"}",
-                response.getBody());
+        assertEquals(EXPECTED_LD_JSON, response.getBody());
     }
 
 
     @Test
     void shouldReturnNotFoundWhenRequestedResourceIsNotFound() {
-        AwsProxyRequest request = new AwsProxyRequestBuilder(NOT_FOUND_PATH, HttpMethod.GET.toString())
+        var request = new AwsProxyRequestBuilder(NOT_FOUND_PATH, HttpMethod.GET.toString())
                 .header(HttpHeaders.ACCEPT, APPLICATION_NTRIPLES)
                 .build();
-        AwsProxyResponse response = handler.handleRequest(request, lambdaContext);
+        var response = handler.handleRequest(request, lambdaContext);
         assertEquals(HttpStatus.NOT_FOUND.getCode(), response.getStatusCode());
     }
 
     @Test
     void shouldReturnNotAcceptableWhenHttpMethodIsNotGet() throws JsonProcessingException {
-        AwsProxyRequest request = new AwsProxyRequestBuilder(TEST_PATH, HttpMethod.GET.toString())
+        var request = new AwsProxyRequestBuilder(TEST_PATH, HttpMethod.GET.toString())
                 .header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON)
                 .build();
-        AwsProxyResponse response = handler.handleRequest(request, lambdaContext);
+        var response = handler.handleRequest(request, lambdaContext);
         assertEquals(HttpStatus.NOT_ACCEPTABLE.getCode(), response.getStatusCode());
         assertEquals(APPLICATION_PROBLEM_JSON, getFirstMultiValueHeader(response));
         var body = objectMapper.readValue(response.getBody(), Problem.class);
@@ -127,5 +132,15 @@ public class OntologyControllerTest {
 
     private String getFirstMultiValueHeader(AwsProxyResponse response) {
         return response.getMultiValueHeaders().get(CONTENT_TYPE).get(0);
+    }
+
+    private static String readFileFromResources(String file) {
+        try {
+            var url = Optional.ofNullable(OntologyControllerTest.class.getClassLoader().getResource(file))
+                    .orElseThrow();
+            return Files.readString(Path.of(url.getFile()), StandardCharsets.UTF_8);
+        } catch (Exception e) {
+            throw new RuntimeException(TEST_DATA_NOT_FOUND_ERROR + file);
+        }
     }
 }
