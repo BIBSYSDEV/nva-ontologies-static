@@ -68,15 +68,6 @@ public class OntologyControllerTest {
     }
 
     @Test
-    void shouldReturnNotFoundWhenRequestedResourceIsNotFound() {
-        AwsProxyRequest request = new AwsProxyRequestBuilder("/not-found", HttpMethod.GET.toString())
-                .header(HttpHeaders.ACCEPT, "application/ntriples")
-                .build();
-        AwsProxyResponse response = handler.handleRequest(request, lambdaContext);
-        assertEquals(HttpStatus.NOT_FOUND.getCode(), response.getStatusCode());
-    }
-
-    @Test
     void shouldReturnRdfXmlWhenAcceptHeaderIsApplicationRdfXml() {
         AwsProxyRequest request = new AwsProxyRequestBuilder("/test", HttpMethod.GET.toString())
                 .header(HttpHeaders.ACCEPT, "application/rdf+xml")
@@ -96,6 +87,16 @@ public class OntologyControllerTest {
         assertEquals(HttpStatus.OK.getCode(), response.getStatusCode());
         assertEquals("{\"@context\": {\"@vocab\": \"https://example.org/\"}, \"name\": \"test\"}",
                 response.getBody());
+    }
+
+
+    @Test
+    void shouldReturnNotFoundWhenRequestedResourceIsNotFound() {
+        AwsProxyRequest request = new AwsProxyRequestBuilder("/not-found", HttpMethod.GET.toString())
+                .header(HttpHeaders.ACCEPT, "application/ntriples")
+                .build();
+        AwsProxyResponse response = handler.handleRequest(request, lambdaContext);
+        assertEquals(HttpStatus.NOT_FOUND.getCode(), response.getStatusCode());
     }
 
     @Test
