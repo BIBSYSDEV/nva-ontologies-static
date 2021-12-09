@@ -18,9 +18,10 @@ jobs:
 
       - name: Install Apache Jena
         run: |
-          wget -O apache-jena.tar.gz https://repo1.maven.org/maven2/org/apache/jena/apache-jena/4.3.0/apache-jena-4.3.0.tar.gz
-          tar xzvf apache-jena.tar.gz
-          export JENA_HOME=apache-jena
+          jena_version=4.3.0
+          wget https://repo1.maven.org/maven2/org/apache/jena/apache-jena/4.3.0/apache-jena-${jena_version}.tar.gz
+          tar xzvf apache-jena-${jena_version}.tar.gz
+          export JENA_HOME=apache-jena-${jena_version}
           export PATH=$PATH:$JENA_HOME/bin
 
       - name: Transform ontologies
@@ -30,10 +31,10 @@ jobs:
           do
             file_no_path=$(basename -- "$file")
             filename="${file_no_path%.*}"
-            apache-jena/bin/riot --output=NT $file > ontology-service/src/main/resources/$filename.nt
-            apache-jena/bin/riot --output=TURTLE $file > ontology-service/src/main/resources/$filename.ttl
-            apache-jena/bin/riot --output=RDFXML $file > ontology-service/src/main/resources/$filename.rdf
-            apache-jena/bin/riot --output=JSONLD $file > ontology-service/src/main/resources/$filename.json
+            apache-jena-${jena_version}/bin/riot --output=NT $file > ontology-service/src/main/resources/$filename.nt
+            apache-jena-${jena_version}/bin/riot --output=TURTLE $file > ontology-service/src/main/resources/$filename.ttl
+            apache-jena-${jena_version}/bin/riot --output=RDFXML $file > ontology-service/src/main/resources/$filename.rdf
+            apache-jena-${jena_version}/bin/riot --output=JSONLD $file > ontology-service/src/main/resources/$filename.json
           done
 
       - name: Build with gradle
