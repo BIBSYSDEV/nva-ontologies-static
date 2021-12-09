@@ -13,13 +13,13 @@ Globals:
       AllowOrigin: "'*'"
 
 Parameters:
-  CustomDomain:
+  ApiDomain:
     Type: 'AWS::SSM::Parameter::Value<String>'
     Description: Custom API to connect this lambda to
-    Default: CustomDomain
+    Default: /NVA/ApiDomain
   CustomDomainBasePath:
     Type: String
-    Description: Base path mapping in CustomDomain
+    Description: Base path mapping in ApiDomain
     Default: ontology
 
 Resources:
@@ -43,7 +43,7 @@ Resources:
   OntologyBasePathMapping:
     Type: AWS::ApiGateway::BasePathMapping
     Properties:
-      DomainName: !Sub api.${CustomDomain}
+      DomainName: !Ref ApiDomain
       BasePath: !Ref CustomDomainBasePath
       RestApiId: !Ref OntologyApi
       Stage: !Ref OntologyApi.Stage
