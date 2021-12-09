@@ -20,11 +20,23 @@ import org.zalando.problem.jackson.ProblemModule;
 
 import java.net.URI;
 
+import static no.sikt.nva.OntologyController.APPLICATION_LD_JSON;
+import static no.sikt.nva.OntologyController.APPLICATION_NTRIPLES;
+import static no.sikt.nva.OntologyController.APPLICATION_RDF_XML;
+import static no.sikt.nva.OntologyController.APPLICATION_TURTLE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.zalando.problem.Status.NOT_ACCEPTABLE;
 
 public class OntologyControllerTest {
 
+    public static final String APPLICATION_PROBLEM_JSON = "application/problem+json";
+    public static final String PROBLEM_JSON_DEFAULT_TYPE = "about:blank";
+    public static final String NOT_ACCEPTABLE_ERROR_MESSAGE = "Specified Accept Types [application/json] not "
+            + "supported. Supported types: [application/ntriples, application/ld+json, application/turtle, "
+            + "application/rdf+xml]";
+    public static final String TEST_PATH = "/test";
+    public static final String CONTENT_TYPE = "Content-Type";
+    public static final String NOT_FOUND_PATH = "/not-found";
     private static MicronautLambdaHandler handler;
     private static final Context lambdaContext = new MockLambdaContext();
     private static ObjectMapper objectMapper;
@@ -48,8 +60,8 @@ public class OntologyControllerTest {
 
     @Test
     void shouldReturnTurtleWhenAcceptHeaderIsApplicationTurtle() {
-        AwsProxyRequest request = new AwsProxyRequestBuilder("/test", HttpMethod.GET.toString())
-                .header(HttpHeaders.ACCEPT, "application/turtle")
+        AwsProxyRequest request = new AwsProxyRequestBuilder(TEST_PATH, HttpMethod.GET.toString())
+                .header(HttpHeaders.ACCEPT, APPLICATION_TURTLE)
                 .build();
         AwsProxyResponse response = handler.handleRequest(request, lambdaContext);
         assertEquals(HttpStatus.OK.getCode(), response.getStatusCode());
@@ -58,8 +70,8 @@ public class OntologyControllerTest {
 
     @Test
     void shouldReturnNTriplesWhenAcceptHeaderIsApplicationNTriples() {
-        AwsProxyRequest request = new AwsProxyRequestBuilder("/test", HttpMethod.GET.toString())
-                .header(HttpHeaders.ACCEPT, "application/ntriples")
+        AwsProxyRequest request = new AwsProxyRequestBuilder(TEST_PATH, HttpMethod.GET.toString())
+                .header(HttpHeaders.ACCEPT, APPLICATION_NTRIPLES)
                 .build();
         AwsProxyResponse response = handler.handleRequest(request, lambdaContext);
         assertEquals(HttpStatus.OK.getCode(), response.getStatusCode());
@@ -69,8 +81,8 @@ public class OntologyControllerTest {
 
     @Test
     void shouldReturnRdfXmlWhenAcceptHeaderIsApplicationRdfXml() {
-        AwsProxyRequest request = new AwsProxyRequestBuilder("/test", HttpMethod.GET.toString())
-                .header(HttpHeaders.ACCEPT, "application/rdf+xml")
+        AwsProxyRequest request = new AwsProxyRequestBuilder(TEST_PATH, HttpMethod.GET.toString())
+                .header(HttpHeaders.ACCEPT, APPLICATION_RDF_XML)
                 .build();
         AwsProxyResponse response = handler.handleRequest(request, lambdaContext);
         assertEquals(HttpStatus.OK.getCode(), response.getStatusCode());
@@ -80,8 +92,8 @@ public class OntologyControllerTest {
 
     @Test
     void shouldReturnJsonLdWhenAcceptHeaderIsApplicationLdJson() {
-        AwsProxyRequest request = new AwsProxyRequestBuilder("/test", HttpMethod.GET.toString())
-                .header(HttpHeaders.ACCEPT, "application/ld+json")
+        AwsProxyRequest request = new AwsProxyRequestBuilder(TEST_PATH, HttpMethod.GET.toString())
+                .header(HttpHeaders.ACCEPT, APPLICATION_LD_JSON)
                 .build();
         AwsProxyResponse response = handler.handleRequest(request, lambdaContext);
         assertEquals(HttpStatus.OK.getCode(), response.getStatusCode());
@@ -92,8 +104,8 @@ public class OntologyControllerTest {
 
     @Test
     void shouldReturnNotFoundWhenRequestedResourceIsNotFound() {
-        AwsProxyRequest request = new AwsProxyRequestBuilder("/not-found", HttpMethod.GET.toString())
-                .header(HttpHeaders.ACCEPT, "application/ntriples")
+        AwsProxyRequest request = new AwsProxyRequestBuilder(NOT_FOUND_PATH, HttpMethod.GET.toString())
+                .header(HttpHeaders.ACCEPT, APPLICATION_NTRIPLES)
                 .build();
         AwsProxyResponse response = handler.handleRequest(request, lambdaContext);
         assertEquals(HttpStatus.NOT_FOUND.getCode(), response.getStatusCode());
@@ -101,19 +113,19 @@ public class OntologyControllerTest {
 
     @Test
     void shouldReturnNotAcceptableWhenHttpMethodIsNotGet() throws JsonProcessingException {
-        AwsProxyRequest request = new AwsProxyRequestBuilder("/test", HttpMethod.GET.toString())
+        AwsProxyRequest request = new AwsProxyRequestBuilder(TEST_PATH, HttpMethod.GET.toString())
                 .header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON)
                 .build();
         AwsProxyResponse response = handler.handleRequest(request, lambdaContext);
         assertEquals(HttpStatus.NOT_ACCEPTABLE.getCode(), response.getStatusCode());
-        assertEquals("application/problem+json", getFirstMultiValueHeader(response));
+        assertEquals(APPLICATION_PROBLEM_JSON, getFirstMultiValueHeader(response));
         var body = objectMapper.readValue(response.getBody(), Problem.class);
         assertEquals(NOT_ACCEPTABLE, body.getStatus());
-        assertEquals(URI.create("about:blank"), body.getType());
-        assertEquals("Specified Accept Types [application/json] not supported. Supported types: [application/ntriples, application/ld+json, application/turtle, application/rdf+xml]", body.getDetail());
+        assertEquals(URI.create(PROBLEM_JSON_DEFAULT_TYPE), body.getType());
+        assertEquals(NOT_ACCEPTABLE_ERROR_MESSAGE, body.getDetail());
     }
 
     private String getFirstMultiValueHeader(AwsProxyResponse response) {
-        return response.getMultiValueHeaders().get("Content-Type").get(0);
+        return response.getMultiValueHeaders().get(CONTENT_TYPE).get(0);
     }
 }
