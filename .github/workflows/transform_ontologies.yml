@@ -18,9 +18,9 @@ jobs:
 
       - name: Install Apache Jena
         run: |
-          wget https://dlcdn.apache.org/jena/binaries/apache-jena-4.3.0.tar.gz
-          tar xzvf apache-jena-4.3.0.tar.gz
-          export JENA_HOME=apache-jena-4.3.0
+          wget -O apache-jena.tar.gz -r -l1 -np "https://dlcdn.apache.org" -P /jena/binaries -A "apache-jena-*.tar.gz"
+          tar xzvf apache-jena.tar.gz
+          export JENA_HOME=apache-jena
           export PATH=$PATH:$JENA_HOME/bin
 
       - name: Transform ontologies
