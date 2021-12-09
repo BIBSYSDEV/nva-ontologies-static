@@ -18,8 +18,7 @@ jobs:
 
       - name: Install Apache Jena
         run: |
-          url=$(wget -r -l1 -np "https://dlcdn.apache.org" -P /jena/binaries -A "apache-jena-[0-9].[0-9].[0-9].tar.gz")
-          echo url
+          wget -O apache-jena.tar.gz -r -l1 -np "https://dlcdn.apache.org/jena/binaries" -P tmp  -A "apache-jena-[0-9].[0-9].[0-9].tar.gz"
           tar xzvf apache-jena.tar.gz
           export JENA_HOME=apache-jena
           export PATH=$PATH:$JENA_HOME/bin
