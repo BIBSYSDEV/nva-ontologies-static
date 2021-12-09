@@ -31,7 +31,7 @@ jobs:
             apache-jena-${jena_version}/bin/riot --output=NT $file > ontology-service/src/main/resources/$filename.nt
             apache-jena-${jena_version}/bin/riot --output=TURTLE $file > ontology-service/src/main/resources/$filename.ttl
             apache-jena-${jena_version}/bin/riot --output=RDFXML $file > ontology-service/src/main/resources/$filename.rdf
-            apache-jena-${jena_version}/bin/riot --output=JSONLD $file > ontology-service/src/main/resources/$filename.json
+            apache-jena-${jena_version}/bin/riot --output=JSONLD $file > ontology-service/src/main/resources/$filename.jsonld
           done
 
       - name: Build with gradle
