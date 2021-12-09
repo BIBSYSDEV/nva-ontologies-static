@@ -14,12 +14,12 @@ phases:
         export JENA_HOME=apache-jena-4.2.0
         export PATH=$PATH:$JENA_HOME/bin
       - echo "Check docker is running"
-      - ps -ef | grep dockerd
       - nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock --host=tcp://127.0.0.1:2375 --storage-driver=overlay2&
       - timeout 15 sh -c "until docker info; do echo .; sleep 1; done"
   pre_build:
     on-failure: ABORT
     commands:
+      - echo "Compile in ontology in multiple formats"
       - |
         mkdir -p lambda/src/public
         for file in ontology/*.ttl
@@ -31,6 +31,7 @@ phases:
           apache-jena-4.2.0/bin/riot --output=RDFXML $file > ontology-service/src/main/resources/$filename.rdf
           apache-jena-4.2.0/bin/riot --output=JSONLD $file > ontology-service/src/main/resources/$filename.json
         done
+      - Build native image
       - cd ontology-service
       - ./gradlew buildNativeLambda
   build:
