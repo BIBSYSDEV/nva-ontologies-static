@@ -40,6 +40,14 @@ Resources:
       StageName: Prod
       EndpointConfiguration: REGIONAL
 
+  OntologyBasePathMapping:
+    Type: AWS::ApiGateway::BasePathMapping
+    Properties:
+      DomainName: !Sub api.${CustomDomain}
+      BasePath: !Ref CustomDomainBasePath
+      RestApiId: !Ref OntologyApi
+      Stage: !Ref OntologyApi.Stage
+
   OntologyService:
     Type: AWS::Serverless::Function
     Properties:
