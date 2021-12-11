@@ -20,7 +20,6 @@ nva-role:AcademicCoordinator a nva:Role ;
   rdfs:label "Akademisk koordinatør"@nn ;
   rdfs:comment "A role with responsibility for co-ordinating academic work" .
 
-#    ADVISOR("Advisor"),
 nva-role:Advisor a nva:Role ;
   rdfs:isDefinedBy nva-role: ;
   rdfs:label "Advisor"@en ;
