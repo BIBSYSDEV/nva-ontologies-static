@@ -1,0 +1,272 @@
+@prefix nva: <https://api.nva.unit.no/ontology/nva#> .
+@prefix nva-role: <https://api.nva.unit.no/ontology/nva-role#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+nva-role: a owl:Ontology ;
+  dcterms:title "The NVA Roles ontology" ;
+  dcterms:description "The roles definitions used in the APIs used in NVA" ;
+  dcterms:creator "Unit" ;
+  dcterms:publisher "Unit" ;
+  dcterms:license <https://creativecommons.org/publicdomain/zero/1.0> .
+
+nva-role:AcademicCoordinator a nva:Role ;
+  rdfs:isDefinedBy nva-role: ;
+  rdfs:label "Academic Coordinator"@en ;
+  rdfs:label "Akademisk koordinatør"@nb ;
+  rdfs:label "Akademisk koordinatør"@nn ;
+  rdfs:comment "A role with responsibility for co-ordinating academic work" .
+
+#    ADVISOR("Advisor"),
+nva-role:Advisor a nva:Role ;
+  rdfs:isDefinedBy nva-role: ;
+  rdfs:label "Advisor"@en ;
+  rdfs:label "Rådgiver"@nb ;
+  rdfs:label "Rådgjevar"@nn ;
+  rdfs:comment "A role with responsibility for providing advice" .
+
+nva-role:Consultant a nva:Role ;
+  rdfs:isDefinedBy nva-role: ;
+  rdfs:label "Consultant"@en ;
+  rdfs:label "Konsulent"@nb ;
+  rdfs:label "Konsulent"@nn ;
+  rdfs:comment "A role with responsibility for providing advice" .
+
+nva-role:ContactPerson a nva:Role ;
+  rdfs:isDefinedBy nva-role: ;
+  rdfs:label "Contact person"@en ;
+  rdfs:label "Kontaktperson"@nb ;
+  rdfs:label "Kontaktperson"@nn ;
+  rdfs:comment "A role with responsibility for receiving and responding to communications" .
+
+nva-role:Creator a nva:Role ;
+  rdfs:isDefinedBy nva-role: ;
+  rdfs:label "Creator"@en ;
+  rdfs:label "Skaper"@nb ;
+  rdfs:label "Skapar"@nn ;
+  rdfs:comment "A role with responsibility for the creation of something" .
+
+nva-role:CuratorOrganizer a nva:Role ;
+  rdfs:isDefinedBy nva-role: ;
+  rdfs:label "Curator organizer"@en ;
+  rdfs:label "Kuratororganisatør"@nb ;
+  rdfs:label "Kuratororganisatør"@nn ;
+  rdfs:comment "A role with responsibility for ??" .
+
+nva-role:DataCollector a nva:Role ;
+  rdfs:isDefinedBy nva-role: ;
+  rdfs:label "Data collector"@en ;
+  rdfs:label "Datainnsamler"@nb ;
+  rdfs:label "Datainnsamlar"@nn ;
+  rdfs:comment "A role with responsibility for collection of data" .
+
+nva-role:DataCurator a nva:Role ;
+  rdfs:isDefinedBy nva-role: ;
+  rdfs:label "Data curator"@en ;
+  rdfs:label "Datakuratør"@nb ;
+  rdfs:label "Datakuratør"@nn ;
+  rdfs:comment "A role with responsibility for curation of data" .
+
+nva-role:DataManager a nva:Role ;
+  rdfs:isDefinedBy nva-role: ;
+  rdfs:label "Data manager"@en ;
+  rdfs:label "Dataadministratør"@nb ;
+  rdfs:label "Dataadministratør"@nn ;
+  rdfs:comment "A role with responsibility for administration of data" .
+
+nva-role:Designer a nva:Role ;
+  rdfs:isDefinedBy nva-role: ;
+  rdfs:label "Designer"@en ;
+  rdfs:label "Designer"@nb ;
+  rdfs:label "Formgjevar"@nn ;
+  rdfs:comment "A role with responsibility for creative expression" .
+
+nva-role:Distributor a nva:Role ;
+  rdfs:isDefinedBy nva-role: ;
+  rdfs:label "Distributor"@en ;
+  rdfs:label "Distributør"@nb ;
+  rdfs:label "Distributør"@nn ;
+  rdfs:comment "A role with responsibility for making something generally available" .
+
+nva-role:Editor a nva:Role ;
+  rdfs:isDefinedBy nva-role: ;
+  rdfs:label "Editor"@en ;
+  rdfs:label "Redaktør"@nb ;
+  rdfs:label "Redaktør"@nn ;
+  rdfs:comment "A role with responsibility for planning, co-ordinating and revising" .
+
+nva-role:EditorialBoardMember a nva:Role ;
+  rdfs:isDefinedBy nva-role: ;
+  rdfs:label "EditorialBoardMember"@en ;
+  rdfs:label "Redaksjonsmedlem"@nb ;
+  rdfs:label "Redaksjonsmedlem"@nn ;
+  rdfs:comment "A role associated with members of a group of individuals who have responsibility for planning, co-ordinating and revising" .
+
+nva-role:Funder a nva:Role ;
+  rdfs:isDefinedBy nva-role: ;
+  rdfs:label "Funder"@en ;
+  rdfs:label "Finansierer"@nb ;
+  rdfs:label "Finansierer"@nn ;
+  rdfs:comment "A role with responsibility for financing" .
+
+nva-role:HostingInstitution a nva:Role ;
+  rdfs:isDefinedBy nva-role: ;
+  rdfs:label "Hosting institution"@en ;
+  rdfs:label "Vertsinstitusjon"@nb ;
+  rdfs:label "Vertsinstitusjon"@nn ;
+  rdfs:comment "A role with responsibility for providing a central location from which activities may be carried out" .
+
+nva-role:Illustrator a nva:Role ;
+  rdfs:isDefinedBy nva-role: ;
+  rdfs:label "Illustrator"@en ;
+  rdfs:label "Illustratør"@nb ;
+  rdfs:label "Illustratør"@nn ;
+  rdfs:comment "A role with responsibility for creating drawings, illustrations and designs" .
+
+nva-role:InterviewSubject a nva:Role ;
+  rdfs:isDefinedBy nva-role: ;
+  rdfs:label "Interview subject"@en ;
+  rdfs:label "Intervjuobject"@nb ;
+  rdfs:label "Intervjuobject"@nn ;
+  rdfs:comment "A role representing those who are interviewed, interviewees" .
+
+nva-role:Journalist a nva:Role ;
+  rdfs:isDefinedBy nva-role: ;
+  rdfs:label "Journalist"@en ;
+  rdfs:label "Journalist"@nb ;
+  rdfs:label "Journalist"@nn ;
+  rdfs:comment "A role with responsibility for creating news content" .
+
+nva-role:Other a nva:Role ;
+  rdfs:isDefinedBy nva-role: ;
+  rdfs:label "Other"@en ;
+  rdfs:label "Annet"@nb ;
+  rdfs:label "Annet"@nn ;
+  rdfs:comment "A role which is not covered by any other category" .
+
+nva-role:Producer a nva:Role ;
+  rdfs:isDefinedBy nva-role: ;
+  rdfs:label "Producer"@en ;
+  rdfs:label "Produsent"@nb ;
+  rdfs:label "Produsent"@nn ;
+  rdfs:comment "A role with overall responsibility for the creation of audiovisual content" .
+
+nva-role:Presenter a nva:Role ;
+  rdfs:isDefinedBy nva-role: ;
+  rdfs:label "Presenter"@en ;
+  rdfs:label "Programleder"@nb ;
+  rdfs:label "Programleiar"@nn ;
+  rdfs:comment "A role with responsibility for presenting content in an audiovisual context" .
+
+nva-role:Participant a nva:Role ;
+  rdfs:isDefinedBy nva-role: ;
+  rdfs:label "Participant"@en ;
+  rdfs:label "Deltaker"@nb ;
+  rdfs:label "Deltakar"@nn ;
+  rdfs:comment "A role involved in something in some capacity" .
+
+# Probably just a "Participant"
+
+nva-role:ProgramParticipant a nva:Role ;
+  rdfs:subClassOf :Participant ;
+  rdfs:isDefinedBy nva-role: ;
+  rdfs:label "Program participant"@en ;
+  rdfs:label "Programdeltaker"@nb ;
+  rdfs:label "Programeltakar"@nn ;
+  rdfs:comment "A role involved in something in some capacity" .
+
+nva-role:ProjectLeader a nva:Role ;
+  rdfs:isDefinedBy nva-role: ;
+  rdfs:label "Project leader"@en ;
+  rdfs:label "Prosjektleder"@nb ;
+  rdfs:label "Prosjektleiar"@nn ;
+  rdfs:comment "A role involved in leading a project" .
+
+nva-role:ProjectManager a nva:Role ;
+  rdfs:isDefinedBy nva-role: ;
+  rdfs:label "Project manager"@en ;
+  rdfs:label "Prosjektmanager"@nb ;
+  rdfs:label "Prosjektmanager"@nn ;
+  rdfs:comment "A role with overall responsibility for leading a project" .
+
+# Is this not just "Participant for a project?"
+
+nva-role:ProjectMember a nva:Role ;
+  rdfs:subClassOf :Participant ;
+  rdfs:isDefinedBy nva-role: ;
+  rdfs:label "Project member"@en ;
+  rdfs:label "Prosjektdeltaker"@nb ;
+  rdfs:label "Prosjektdeltakar"@nn ;
+  rdfs:comment "A role with responsibility for taking part in a project in an unspecified capacity" .
+
+nva-role:RegistrationAgency a nva:Role ;
+  rdfs:isDefinedBy nva-role: ;
+  rdfs:label "Registration agency"@en ;
+  rdfs:label "Registreringsorgan"@nb ;
+  rdfs:label "Registreringsorgan"@nn ;
+  rdfs:comment "A role with responsibility for providing ?" .
+
+nva-role:RegistrationAuthority a nva:Role ;
+  rdfs:isDefinedBy nva-role: ;
+  rdfs:label "Registration authority"@en ;
+  rdfs:label "Registreringsautoritet"@nb ;
+  rdfs:label "Registreringsautoritet"@nn ;
+  rdfs:comment "A role with responsibility for providing ?" .
+
+nva-role:RelatedPerson a nva:Role ;
+  rdfs:isDefinedBy nva-role: ;
+  rdfs:label "Related person"@en ;
+  rdfs:label "Relatertperson"@nb ;
+  rdfs:label "Relatertperson"@nn ;
+  rdfs:comment "A role with some unspecified connection to something" .
+
+nva-role:Researcher a nva:Role ;
+  rdfs:isDefinedBy nva-role: ;
+  rdfs:label "Researcher"@en ;
+  rdfs:label "Forsker"@nb ;
+  rdfs:label "Forskar"@nn ;
+  rdfs:comment "A role with responsibility for research" .
+
+# This is actually an organization, not a role
+
+nva-role:ResearchGroup a nva:Role ;
+  rdfs:isDefinedBy nva-role: ;
+  rdfs:label "Research group"@en ;
+  rdfs:label "Forskningsgruppe"@nb ;
+  rdfs:label "Forskningsgruppe"@nn ;
+  rdfs:comment "A role with responsibility for ???" .
+
+# Not sure if this is a role or not
+
+nva-role:RightsHolder a nva:Role ;
+  rdfs:isDefinedBy nva-role: ;
+  rdfs:label "Rights holder"@en ;
+  rdfs:label "Rettighetsinnhaver"@nb ;
+  rdfs:label "Rettighetsinnhaver"@nn ;
+  rdfs:comment "A role with legal ownership of something" .
+
+# Is this different from "Funder"?
+
+nva-role:Sponsor a nva:Role ;
+  rdfs:isDefinedBy nva-role: ;
+  rdfs:label "Sponsor"@en ;
+  rdfs:label "Sponsor"@nb ;
+  rdfs:label "Sponsor"@nn ;
+  rdfs:comment "A role with responsibility for financing something" .
+
+nva-role:Supervisor a nva:Role ;
+  rdfs:isDefinedBy nva-role: ;
+  rdfs:label "Supervisor"@en ;
+  rdfs:label "Veileder"@nb ;
+  rdfs:label "Rettleiar"@nn ;
+  rdfs:comment "A role with responsibility supervising something" .
+
+nva-role:WorkPackageLeader a nva:Role ;
+  rdfs:isDefinedBy nva-role: ;
+  rdfs:label "Work package leader"@en ;
+  rdfs:label "Arbeidspakkeleder"@nb ;
+  rdfs:label "Arbeidspakkeleiar"@nn ;
+  rdfs:comment "A role with responsibility administering a subpart of a project" .
