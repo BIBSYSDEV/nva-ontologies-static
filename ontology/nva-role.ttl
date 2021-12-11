@@ -170,7 +170,7 @@ nva-role:Participant a nva:Role ;
 # Probably just a "Participant"
 
 nva-role:ProgramParticipant a nva:Role ;
-  rdfs:subClassOf :Participant ;
+  rdfs:subClassOf nva-role:Participant ;
   rdfs:isDefinedBy nva-role: ;
   rdfs:label "Program participant"@en ;
   rdfs:label "Programdeltaker"@nb ;
@@ -194,7 +194,7 @@ nva-role:ProjectManager a nva:Role ;
 # Is this not just "Participant for a project?"
 
 nva-role:ProjectMember a nva:Role ;
-  rdfs:subClassOf :Participant ;
+  rdfs:subClassOf nva-role:Participant ;
   rdfs:isDefinedBy nva-role: ;
   rdfs:label "Project member"@en ;
   rdfs:label "Prosjektdeltaker"@nb ;
