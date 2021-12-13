@@ -58,6 +58,10 @@ Resources:
       Description: Ontology service
       CodeUri: ontology-service/build/libs/ontology-service-0.1-lambda.zip
       Role: !GetAtt OntologyExecutionRole.Arn
+      Environment:
+        Variables:
+          DOMAIN: !Sub api.${CustomDomain}
+          BASEPATH: !Ref CustomDomainBasePath
       Events:
         GetEvent:
           Type: Api

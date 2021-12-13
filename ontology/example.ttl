@@ -1,2 +1,2 @@
-@prefix : <https://example.org/ontology#> .
+@prefix : <https://example.org/ontology/example#> .
 <https://example.org/barmcake> a :Class .

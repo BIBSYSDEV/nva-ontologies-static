@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Optional;
 
+import static java.util.Objects.nonNull;
+
 @Controller
 public class OntologyController {
     public static final Logger logger = LoggerFactory.getLogger(OntologyController.class);
@@ -26,6 +28,12 @@ public class OntologyController {
     public static final String JSONLD = "jsonld";
     public static final String PATH_PARAM_FILE = "{file}";
     public static final String EXTENSION_SEPERATOR = ".";
+    public static final String DOMAIN_ENV_VAR = "DOMAIN";
+    public static final String DOMAIN = System.getenv(DOMAIN_ENV_VAR);
+    public static final String BASEPATH_ENV_VAR = "BASEPATH";
+    public static final String BASE_PATH = System.getenv(BASEPATH_ENV_VAR);
+    public static final String REPLACEMENT_KEY = "https://example.org";
+    public static final String PATH_SEPERATOR = "/";
 
     private final ResourceLoader loader = new ResourceResolver().getLoader(ClassPathResourceLoader.class).orElseThrow();
 
@@ -51,10 +59,18 @@ public class OntologyController {
 
     private String getResourceAsString(String file, String extension) throws IOException {
         Optional<InputStream> inputStream = loader.getResourceAsStream(file + EXTENSION_SEPERATOR + extension);
+
         if (inputStream.isPresent()) {
-            return new String(inputStream.get().readAllBytes());
+            var ontologyString = new String(inputStream.get().readAllBytes());
+            return getOOntologyWithRemappedUris(ontologyString);
         }
         logger.warn(String.format("Requested file \"%s.%s\" was not found", file, extension));
         return null;
+    }
+
+    private String getOOntologyWithRemappedUris(String ontologyString) {
+        return nonNull(DOMAIN) && nonNull(BASE_PATH)
+                ? ontologyString.replaceAll(REPLACEMENT_KEY, DOMAIN + PATH_SEPERATOR + BASE_PATH)
+                : ontologyString;
     }
 }
