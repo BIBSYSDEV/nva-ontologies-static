@@ -1,0 +1,91 @@
+@prefix nva: <https://api.nva.unit.no/ontology/nva#> .
+@prefix nva-type: <https://api.nva.unit.no/ontology/nva-type#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+nva-type: a owl:Ontology ;
+  dcterms:title "The NVA type ontology" ;
+  dcterms:description "The type definitions used in the APIs used in NVA" ;
+  dcterms:creator "Unit" ;
+  dcterms:publisher "Unit" ;
+  dcterms:license <https://creativecommons.org/publicdomain/zero/1.0> .
+
+nva-type:ClothingDesign a nva:InstanceType ;
+  rdfs:isDefinedBy nva-type: ;
+  rdfs:label "Clothing design"@en ;
+  rdfs:label "Klæsdesign"@nb ;
+  rdfs:label "Klæsdesign"@nn ;
+  rdfs:comment "A design for clothing" .
+
+nva-type:Exhibition a nva:InstanceType ;
+  rdfs:isDefinedBy nva-type: ;
+  rdfs:label "Exhibition"@en ;
+  rdfs:label "Utstilling"@nb ;
+  rdfs:label "Utstilling"@nn ;
+  rdfs:comment "A design for an exhibition" .
+
+nva-type:GraphicDesign a nva:InstanceType ;
+  rdfs:isDefinedBy nva-type: ;
+  rdfs:label "Graphic design"@en ;
+  rdfs:label "Grafisk design"@nb ;
+  rdfs:label "Grafisk design"@nn ;
+  rdfs:comment "A visual design" .
+
+nva-type:Illustration a nva:InstanceType ;
+  rdfs:isDefinedBy nva-type: ;
+  rdfs:label "Illustration"@en ;
+  rdfs:label "Illustrasjon"@nb ;
+  rdfs:label "Illustrasjon"@nn ;
+  rdfs:comment "A drawn design" .
+
+nva-type:InteractionDesign a nva:InstanceType ;
+  rdfs:isDefinedBy nva-type: ;
+  rdfs:label "Interaction design"@en ;
+  rdfs:label "Interaksjonsdesign"@nb ;
+  rdfs:label "Interaksjonsdesign"@nn ;
+  rdfs:comment "Not sure what this is??" .
+
+nva-type:InteriorDesign a nva:InstanceType ;
+  rdfs:isDefinedBy nva-type: ;
+  rdfs:label "Interior design"@en ;
+  rdfs:label "Interiørdesign"@nb ;
+  rdfs:label "Interiørdesign"@nn ;
+  rdfs:comment "A design of ??" .
+
+nva-type:LightDesign a nva:InstanceType ;
+  rdfs:isDefinedBy nva-type: ;
+  rdfs:label "Light design"@en ;
+  rdfs:label "Lysdesign"@nb ;
+  rdfs:label "Lysdesign"@nn ;
+  rdfs:comment "A design of ??" .
+
+nva-type:Other a nva:InstanceType ;
+  rdfs:isDefinedBy nva-type: ;
+  rdfs:label "Other"@en ;
+  rdfs:label "Annet"@nb ;
+  rdfs:label "Annet"@nn ;
+  rdfs:comment "Something that doesn't fit in the other categories" .
+
+nva-type:ProductDesign a nva:InstanceType ;
+  rdfs:isDefinedBy nva-type: ;
+  rdfs:label "Product design"@en ;
+  rdfs:label "Produktdesign"@nb ;
+  rdfs:label "Produktdesign"@nn ;
+  rdfs:comment "A design for a product" .
+
+nva-type:ServiceDesign a nva:InstanceType ;
+  rdfs:isDefinedBy nva-type: ;
+  rdfs:label "Service design"@en ;
+  rdfs:label "Tjenestedesign"@nb ;
+  rdfs:label "Tenestedesign"@nn ;
+  rdfs:comment "A design for a service" .
+
+nva-type:WebDesign a nva:InstanceType ;
+  rdfs:isDefinedBy nva-type: ;
+  rdfs:label "Web design"@en ;
+  rdfs:label "Webdesign"@nb ;
+  rdfs:label "Vevdesign"@nn ;
+  rdfs:comment "A design for a web service" .
