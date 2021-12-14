@@ -60,7 +60,7 @@ Resources:
       Role: !GetAtt OntologyExecutionRole.Arn
       Environment:
         Variables:
-          DOMAIN: !Sub api.${ApiDomain}
+          DOMAIN: !Sub ApiDomain
           BASEPATH: !Ref CustomDomainBasePath
       Events:
         GetEvent:
