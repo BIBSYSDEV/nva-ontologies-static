@@ -34,6 +34,7 @@ public class OntologyController {
     public static final String BASE_PATH = System.getenv(BASEPATH_ENV_VAR);
     public static final String REPLACEMENT_KEY = "https://example.org";
     public static final String PATH_SEPERATOR = "/";
+    public static final String SCHEME = "https://";
 
     private final ResourceLoader loader = new ResourceResolver().getLoader(ClassPathResourceLoader.class).orElseThrow();
 
@@ -70,7 +71,7 @@ public class OntologyController {
 
     private String getOOntologyWithRemappedUris(String ontologyString) {
         return nonNull(DOMAIN) && nonNull(BASE_PATH)
-                ? ontologyString.replaceAll(REPLACEMENT_KEY, DOMAIN + PATH_SEPERATOR + BASE_PATH)
+                ? ontologyString.replaceAll(REPLACEMENT_KEY, SCHEME + DOMAIN + PATH_SEPERATOR + BASE_PATH)
                 : ontologyString;
     }
 }
