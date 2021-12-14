@@ -16,8 +16,8 @@ phases:
     commands:
       - echo "Compile in ontology in multiple formats"
       - |
-        jena_version=4.3.0
-        wget https://repo1.maven.org/maven2/org/apache/jena/apache-jena/4.3.0/apache-jena-${jena_version}.tar.gz
+        jena_version=4.3.1
+        wget https://repo1.maven.org/maven2/org/apache/jena/apache-jena/${jena_version}/apache-jena-${jena_version}.tar.gz
         tar xzvf apache-jena-${jena_version}.tar.gz
         export JENA_HOME=apache-jena-${jena_version}
         export PATH=$PATH:$JENA_HOME/bin
