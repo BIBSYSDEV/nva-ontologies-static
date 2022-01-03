@@ -16,8 +16,8 @@ nva-type: a owl:Ontology ;
 nva-type:ClothingDesign a nva:InstanceType ;
   rdfs:isDefinedBy nva-type: ;
   rdfs:label "Clothing design"@en ;
-  rdfs:label "Klæsdesign"@nb ;
-  rdfs:label "Klæsdesign"@nn ;
+  rdfs:label "Klesdesign"@nb ;
+  rdfs:label "Klesdesign"@nn ;
   rdfs:comment "A design for clothing" .
 
 nva-type:Exhibition a nva:InstanceType ;
