@@ -37,7 +37,7 @@ nva-type:GraphicDesign a nva:InstanceType ;
   rdfs:label "Grafisk design"@nb ;
   rdfs:label "Grafisk design"@nn ;
   rdfs:comment "A visual design"@en ;
-  rdfs:comment "En visuell"@nb ;
+  rdfs:comment "En visuell design"@nb ;
   rdfs:comment "Ein visuell design"@nn .
 
 nva-type:Illustration a nva:InstanceType ;
