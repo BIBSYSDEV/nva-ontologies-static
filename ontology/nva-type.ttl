@@ -54,21 +54,27 @@ nva-type:InteractionDesign a nva:InstanceType ;
   rdfs:label "Interaction design"@en ;
   rdfs:label "Interaksjonsdesign"@nb ;
   rdfs:label "Interaksjonsdesign"@nn ;
-  rdfs:comment "Not sure what this is??" .
+  rdfs:comment "A system interaction design"@en ;
+  rdfs:comment "En systeminteraksjondesign"@nb ;
+  rdfs:comment "Ein systeminteraksjondesign"@nn .
 
 nva-type:InteriorDesign a nva:InstanceType ;
   rdfs:isDefinedBy nva-type: ;
   rdfs:label "Interior design"@en ;
   rdfs:label "Interiørdesign"@nb ;
   rdfs:label "Interiørdesign"@nn ;
-  rdfs:comment "A design of ??" .
+  rdfs:comment "A design for a building interior"@en ;
+  rdfs:comment "En design for et bygningsinteriør"@nb ;
+  rdfs:comment "Ein design for eit bygningsinteriør"@nn .
 
 nva-type:LightDesign a nva:InstanceType ;
   rdfs:isDefinedBy nva-type: ;
   rdfs:label "Light design"@en ;
   rdfs:label "Lysdesign"@nb ;
   rdfs:label "Lysdesign"@nn ;
-  rdfs:comment "A design of ??" .
+  rdfs:comment "A design for a lighting system or installation"@en ;
+  rdfs:comment "En design for et lyssystem eller -installasjon"@nb ;
+  rdfs:comment "Ein design for eit lyssystem eller -installasjon"@nn .
 
 nva-type:Other a nva:InstanceType ;
   rdfs:isDefinedBy nva-type: ;
