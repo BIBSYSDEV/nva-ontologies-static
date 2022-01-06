@@ -1,0 +1,113 @@
+@prefix nva: <https://api.nva.unit.no/ontology/nva#> .
+@prefix nva-type: <https://api.nva.unit.no/ontology/nva-type#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+nva-type: a owl:Ontology ;
+  dcterms:title "The NVA type ontology" ;
+  dcterms:description "The type definitions used in the APIs used in NVA" ;
+  dcterms:creator "Unit" ;
+  dcterms:publisher "Unit" ;
+  dcterms:license <https://creativecommons.org/publicdomain/zero/1.0> .
+
+nva-type:ClothingDesign a nva:InstanceType ;
+  rdfs:isDefinedBy nva-type: ;
+  rdfs:label "Clothing design"@en ;
+  rdfs:label "Klesdesign"@nb ;
+  rdfs:label "Klesdesign"@nn ;
+  rdfs:comment "A design for clothing"@en ;
+  rdfs:comment "En design for klær"@nb ;
+  rdfs:comment "Ein design for klær"@nn .
+
+nva-type:Exhibition a nva:InstanceType ;
+  rdfs:isDefinedBy nva-type: ;
+  rdfs:label "Exhibition"@en ;
+  rdfs:label "Utstilling"@nb ;
+  rdfs:label "Utstilling"@nn ;
+  rdfs:comment "A design for an exhibition"@en ;
+  rdfs:comment "En design for en utstilling"@nb ;
+  rdfs:comment "Ein design for ei utstilling"@nn .
+
+nva-type:GraphicDesign a nva:InstanceType ;
+  rdfs:isDefinedBy nva-type: ;
+  rdfs:label "Graphic design"@en ;
+  rdfs:label "Grafisk design"@nb ;
+  rdfs:label "Grafisk design"@nn ;
+  rdfs:comment "A visual design"@en ;
+  rdfs:comment "En visuell design"@nb ;
+  rdfs:comment "Ein visuell design"@nn .
+
+nva-type:Illustration a nva:InstanceType ;
+  rdfs:isDefinedBy nva-type: ;
+  rdfs:label "Illustration"@en ;
+  rdfs:label "Illustrasjon"@nb ;
+  rdfs:label "Illustrasjon"@nn ;
+  rdfs:comment "A drawn design"@en ;
+  rdfs:comment "En tegnet design"@nb ;
+  rdfs:comment "Ein teikna design"@nn .
+
+nva-type:InteractionDesign a nva:InstanceType ;
+  rdfs:isDefinedBy nva-type: ;
+  rdfs:label "Interaction design"@en ;
+  rdfs:label "Interaksjonsdesign"@nb ;
+  rdfs:label "Interaksjonsdesign"@nn ;
+  rdfs:comment "A system interaction design"@en ;
+  rdfs:comment "En systeminteraksjondesign"@nb ;
+  rdfs:comment "Ein systeminteraksjondesign"@nn .
+
+nva-type:InteriorDesign a nva:InstanceType ;
+  rdfs:isDefinedBy nva-type: ;
+  rdfs:label "Interior design"@en ;
+  rdfs:label "Interiørdesign"@nb ;
+  rdfs:label "Interiørdesign"@nn ;
+  rdfs:comment "A design for a building interior"@en ;
+  rdfs:comment "En design for et bygningsinteriør"@nb ;
+  rdfs:comment "Ein design for eit bygningsinteriør"@nn .
+
+nva-type:LightDesign a nva:InstanceType ;
+  rdfs:isDefinedBy nva-type: ;
+  rdfs:label "Light design"@en ;
+  rdfs:label "Lysdesign"@nb ;
+  rdfs:label "Lysdesign"@nn ;
+  rdfs:comment "A design for a lighting system or installation"@en ;
+  rdfs:comment "En design for et lyssystem eller -installasjon"@nb ;
+  rdfs:comment "Ein design for eit lyssystem eller -installasjon"@nn .
+
+nva-type:Other a nva:InstanceType ;
+  rdfs:isDefinedBy nva-type: ;
+  rdfs:label "Other"@en ;
+  rdfs:label "Annet"@nb ;
+  rdfs:label "Annet"@nn ;
+  rdfs:comment "Something that doesn't fit in the other categories"@en ;
+  rdfs:comment "Noe som ikke passer inn i de andre kategoriene"@nb ;
+  rdfs:comment "Noko som ikkje passar inn i dei andre kategoriane"@nn .
+
+nva-type:ProductDesign a nva:InstanceType ;
+  rdfs:isDefinedBy nva-type: ;
+  rdfs:label "Product design"@en ;
+  rdfs:label "Produktdesign"@nb ;
+  rdfs:label "Produktdesign"@nn ;
+  rdfs:comment "A design for a product"@en ;
+  rdfs:comment "En design for et produkt"@nb ;
+  rdfs:comment "Ein design for eit produkt"@nn .
+
+nva-type:ServiceDesign a nva:InstanceType ;
+  rdfs:isDefinedBy nva-type: ;
+  rdfs:label "Service design"@en ;
+  rdfs:label "Tjenestedesign"@nb ;
+  rdfs:label "Tenestedesign"@nn ;
+  rdfs:comment "A design for a service"@en ;
+  rdfs:comment "En design for en tjeneste"@nb ;
+  rdfs:comment "Ein design for ei teneste"@nn .
+
+nva-type:WebDesign a nva:InstanceType ;
+  rdfs:isDefinedBy nva-type: ;
+  rdfs:label "Web design"@en ;
+  rdfs:label "Webdesign"@nb ;
+  rdfs:label "Vevdesign"@nn ;
+  rdfs:comment "A design for a web service"@en ;
+  rdfs:comment "En design for en webtjeneste"@nb ;
+  rdfs:comment "Ein design for ei vevteneste"@nn .
