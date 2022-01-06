@@ -42,3 +42,16 @@ java {
     targetCompatibility = JavaVersion.toVersion("11")
 }
 
+docker {
+    def docker_username = System.getenv('DOCKER_HUB_USERNAME')
+    def docker_secret = System.getenv('DOCKER_HUB_SECRET')
+
+    if (!docker_username?.trim() || !docker_secret?.trim()) {
+        throw new RuntimeException('The required docker-hub credentials are missing')
+    }
+
+    registryCredentials  {
+        username = docker_username
+        password = docker_secret
+    }
+}

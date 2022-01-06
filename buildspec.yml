@@ -1,5 +1,10 @@
 version: 0.2
 
+env:
+  secrets-manager:
+    DOCKER_HUB_USERNAME: DockerHubCredentials:DockerHubUsername
+    DOCKER_HUB_SECRET: DockerHubCredentials:DockerHubSecret
+
 phases:
   install:
     on-failure: ABORT
