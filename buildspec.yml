@@ -9,7 +9,7 @@ phases:
   install:
     on-failure: ABORT
     runtime-versions:
-      java: openjdk11
+      java: corretto11
       docker: latest
     commands:
       - pip3 install aws-sam-cli
