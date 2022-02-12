@@ -36,6 +36,8 @@ phases:
           apache-jena-${jena_version}/bin/riot --output=RDFXML $file > ontology-service/src/main/resources/$filename.rdf
           apache-jena-${jena_version}/bin/riot --output=JSONLD $file > ontology-service/src/main/resources/$filename.jsonld
         done
+      - echo "Docker login"
+      - echo $DOCKER_HUB_SECRET | docker login --username $DOCKER_HUB_USERNAME --password-stdin
       - echo "Build native image"
       - cd ontology-service
       - ./gradlew buildNativeLambda
