@@ -51,7 +51,7 @@ docker {
     }
 
     registryCredentials  {
-        username = docker_username
-        password = docker_secret
+        username.set(docker_username)
+        password.set(docker_secret)
     }
 }
