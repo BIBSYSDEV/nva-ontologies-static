@@ -16,6 +16,8 @@ phases:
       - echo "Check docker is running"
       - nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock --host=tcp://127.0.0.1:2375 --storage-driver=overlay2&
       - timeout 15 sh -c "until docker info; do echo .; sleep 1; done"
+      - echo "Docker login"
+      - echo $DOCKER_HUB_SECRET | docker login --username $DOCKER_HUB_USERNAME --password-stdin
   pre_build:
     on-failure: ABORT
     commands:
@@ -36,8 +38,6 @@ phases:
           apache-jena-${jena_version}/bin/riot --output=RDFXML $file > ontology-service/src/main/resources/$filename.rdf
           apache-jena-${jena_version}/bin/riot --output=JSONLD $file > ontology-service/src/main/resources/$filename.jsonld
         done
-      - echo "Docker login"
-      - echo $DOCKER_HUB_SECRET | docker login --username $DOCKER_HUB_USERNAME --password-stdin
       - echo "Build native image"
       - cd ontology-service
       - ./gradlew buildNativeLambda
