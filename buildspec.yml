@@ -40,6 +40,7 @@ phases:
       - echo "Build native image"
       - cd ontology-service
       - echo -n "$DOCKER_HUB_SECRET" | docker login --username $DOCKER_HUB_USERNAME --password-stdin
+      - docker pull amazonlinux:latest
       - ./gradlew buildNativeLambda
   build:
       on-failure: ABORT
