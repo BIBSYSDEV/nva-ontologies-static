@@ -17,7 +17,6 @@ phases:
       - nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock --host=tcp://127.0.0.1:2375 --storage-driver=overlay2&
       - timeout 15 sh -c "until docker info; do echo .; sleep 1; done"
       - echo "Docker login"
-      - echo -n "$DOCKER_HUB_SECRET" | docker login --username $DOCKER_HUB_USERNAME --password-stdin
   pre_build:
     on-failure: ABORT
     commands:
@@ -40,6 +39,7 @@ phases:
         done
       - echo "Build native image"
       - cd ontology-service
+      - echo -n "$DOCKER_HUB_SECRET" | docker login --username $DOCKER_HUB_USERNAME --password-stdin
       - ./gradlew buildNativeLambda
   build:
       on-failure: ABORT
