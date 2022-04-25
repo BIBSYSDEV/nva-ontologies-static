@@ -31,6 +31,55 @@ nva-role:Advisor a nva:Role ;
   rdfs:comment "En rolle med ansvar for å gi råd"@nb ;
   rdfs:comment "Ei rolle med ansvar for å gje råd"@nn .
 
+nva-role:Architect a nva:Role ;
+  rdfs:isDefinedBy nva-role: ;
+  rdfs:subClassOf nva-role:ArtisticCreator ;
+  rdfs:label "Architect"@en ;
+  rdfs:label "Arkitekt"@nb ;
+  rdfs:label "Arkitekt"@nn ;
+  rdfs:comment "A role with responsibility for creation of architectural designs"@en ;
+  rdfs:comment "En rolle med ansvar for skaping av design for større utvendige arealer i bebygde områder"@nb ;
+  rdfs:comment "Ei rolle med ansvar for skaping av design for større utvendige areal i utbygde område"@nn .
+
+nva-role:LandscapeArchitect a nva:Role ;
+  rdfs:isDefinedBy nva-role: ;
+  rdfs:subClassOf nva-role:ArtisticCreator ;
+  rdfs:label "Landscape Architect"@en ;
+  rdfs:label "Landskapsarkitekt"@nb ;
+  rdfs:label "Landskapsarkitekt"@nn ;
+  rdfs:comment "A role with responsibility for creation of landscape architectural designs"@en ;
+  rdfs:comment "En rolle med ansvar for skaping av landskapsarkitektonisk design"@nb ;
+  rdfs:comment "Ei rolle med ansvar for skaping av landskapsarkitektonisk design"@nn .
+
+nva-role:InteriorArchitect a nva:Role ;
+  rdfs:isDefinedBy nva-role: ;
+  rdfs:subClassOf nva-role:ArtisticCreator ;
+  rdfs:label "Interior Architect"@en ;
+  rdfs:label "Interiørarkitekt"@nb ;
+  rdfs:label "Interiørarkitekt"@nn ;
+  rdfs:comment "A role with responsibility for creation of the internal design of buildings"@en ;
+  rdfs:comment "En rolle med ansvar for skaping av interne design av bygninger"@nb ;
+  rdfs:comment "Ei rolle med ansvar for skaping av interne design av bygningar"@nn .
+
+nva-role:ArchitecturalPlanner a nva:Role ;
+  rdfs:isDefinedBy nva-role: ;
+  rdfs:subClassOf nva-role:ArtisticCreator ;
+  rdfs:label "Architectural planner"@en ;
+  rdfs:label "Arkitekt/Planlegger"@nb ;
+  rdfs:label "Arkitekt/Planleggjar"@nn ;
+  rdfs:comment "A role with responsibility for activities associated with planning and conformance to regulations"@en ;
+  rdfs:comment "En rolle med ansvar for planleggings- og reguleringsaktiviteter"@nb ;
+  rdfs:comment "Ei rolle med ansvar for planleggings- og reguleringsaktivitetar"@nn .
+
+nva-role:ArtisticCreator a nva:Role ;
+  rdfs:isDefinedBy nva-role: ;
+  rdfs:label "Artistic Creator"@en ;
+  rdfs:label "Artistisk skaper"@nb ;
+  rdfs:label "Artistisk skapar"@nn ;
+  rdfs:comment "A role with responsibility for creation of artistic content"@en ;
+  rdfs:comment "En rolle med ansvar for skaping av kunstnerisk innhold"@nb ;
+  rdfs:comment "Ei rolle med ansvar for skaping av kunstnerisk innhald"@nn .
+
 nva-role:Consultant a nva:Role ;
   rdfs:isDefinedBy nva-role: ;
   rdfs:label "Consultant"@en ;
