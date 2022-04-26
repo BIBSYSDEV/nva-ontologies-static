@@ -19,8 +19,8 @@ nva-role:AcademicCoordinator a nva:Role ;
   rdfs:label "Akademisk koordinator"@nb ;
   rdfs:label "Akademisk koordinator"@nn ;
   rdfs:comment "A role with responsibility for co-ordinating academic work"@en ;
-  rdfs:comment "En rolle med ansvar for koordinering av akademisk virksomhet"@nb ;
-  rdfs:comment "Ei rolle med ansvar for samordning av akademisk verksemd"@nn .
+  rdfs:comment "En rolle ansvarlig for koordinering av akademisk virksomhet"@nb ;
+  rdfs:comment "Ei rolle ansvarleg for samordning av akademisk verksemd"@nn .
 
 nva-role:Advisor a nva:Role ;
   rdfs:isDefinedBy nva-role: ;
@@ -28,8 +28,8 @@ nva-role:Advisor a nva:Role ;
   rdfs:label "Rådgiver"@nb ;
   rdfs:label "Rådgjevar"@nn ;
   rdfs:comment "A role with responsibility for providing advice"@en ;
-  rdfs:comment "En rolle med ansvar for å gi råd"@nb ;
-  rdfs:comment "Ei rolle med ansvar for å gje råd"@nn .
+  rdfs:comment "En rolle ansvarlig for å gi råd"@nb ;
+  rdfs:comment "Ei rolle ansvarleg for å gje råd"@nn .
 
 nva-role:Architect a nva:Role ;
   rdfs:isDefinedBy nva-role: ;
@@ -38,8 +38,8 @@ nva-role:Architect a nva:Role ;
   rdfs:label "Arkitekt"@nb ;
   rdfs:label "Arkitekt"@nn ;
   rdfs:comment "A role with responsibility for creation of architectural designs"@en ;
-  rdfs:comment "En rolle med ansvar for skaping av design for større utvendige arealer i bebygde områder"@nb ;
-  rdfs:comment "Ei rolle med ansvar for skaping av design for større utvendige areal i utbygde område"@nn .
+  rdfs:comment "En rolle ansvarlig for skaping av design for større utvendige arealer i bebygde områder"@nb ;
+  rdfs:comment "Ei rolle ansvarleg for skaping av design for større utvendige areal i utbygde område"@nn .
 
 nva-role:LandscapeArchitect a nva:Role ;
   rdfs:isDefinedBy nva-role: ;
@@ -48,8 +48,8 @@ nva-role:LandscapeArchitect a nva:Role ;
   rdfs:label "Landskapsarkitekt"@nb ;
   rdfs:label "Landskapsarkitekt"@nn ;
   rdfs:comment "A role with responsibility for creation of landscape architectural designs"@en ;
-  rdfs:comment "En rolle med ansvar for skaping av landskapsarkitektonisk design"@nb ;
-  rdfs:comment "Ei rolle med ansvar for skaping av landskapsarkitektonisk design"@nn .
+  rdfs:comment "En rolle ansvarlig for skaping av landskapsarkitektonisk design"@nb ;
+  rdfs:comment "Ei rolle ansvarleg for skaping av landskapsarkitektonisk design"@nn .
 
 nva-role:InteriorArchitect a nva:Role ;
   rdfs:isDefinedBy nva-role: ;
@@ -58,8 +58,8 @@ nva-role:InteriorArchitect a nva:Role ;
   rdfs:label "Interiørarkitekt"@nb ;
   rdfs:label "Interiørarkitekt"@nn ;
   rdfs:comment "A role with responsibility for creation of the internal design of buildings"@en ;
-  rdfs:comment "En rolle med ansvar for skaping av interne design av bygninger"@nb ;
-  rdfs:comment "Ei rolle med ansvar for skaping av interne design av bygningar"@nn .
+  rdfs:comment "En rolle ansvarlig for skaping av interne design av bygninger"@nb ;
+  rdfs:comment "Ei rolle ansvarleg for skaping av interne design av bygningar"@nn .
 
 nva-role:ArchitecturalPlanner a nva:Role ;
   rdfs:isDefinedBy nva-role: ;
@@ -68,8 +68,8 @@ nva-role:ArchitecturalPlanner a nva:Role ;
   rdfs:label "Arkitekt/Planlegger"@nb ;
   rdfs:label "Arkitekt/Planleggjar"@nn ;
   rdfs:comment "A role with responsibility for activities associated with planning and conformance to regulations"@en ;
-  rdfs:comment "En rolle med ansvar for planleggings- og reguleringsaktiviteter"@nb ;
-  rdfs:comment "Ei rolle med ansvar for planleggings- og reguleringsaktivitetar"@nn .
+  rdfs:comment "En rolle ansvarlig for planleggings- og reguleringsaktiviteter"@nb ;
+  rdfs:comment "Ei rolle ansvarleg for planleggings- og reguleringsaktivitetar"@nn .
 
 nva-role:ArtisticCreator a nva:Role ;
   rdfs:isDefinedBy nva-role: ;
@@ -77,8 +77,8 @@ nva-role:ArtisticCreator a nva:Role ;
   rdfs:label "Artistisk skaper"@nb ;
   rdfs:label "Artistisk skapar"@nn ;
   rdfs:comment "A role with responsibility for creation of artistic content"@en ;
-  rdfs:comment "En rolle med ansvar for skaping av kunstnerisk innhold"@nb ;
-  rdfs:comment "Ei rolle med ansvar for skaping av kunstnerisk innhald"@nn .
+  rdfs:comment "En rolle ansvarlig for skaping av kunstnerisk innhold"@nb ;
+  rdfs:comment "Ei rolle ansvarleg for skaping av kunstnerisk innhald"@nn .
 
 nva-role:Consultant a nva:Role ;
   rdfs:isDefinedBy nva-role: ;
@@ -86,8 +86,8 @@ nva-role:Consultant a nva:Role ;
   rdfs:label "Konsulent"@nb ;
   rdfs:label "Konsulent"@nn ;
   rdfs:comment "A role with responsibility for carrying out work"@en ;
-  rdfs:comment "En rolle med ansvar for gjennomføring av arbeid"@nb ;
-  rdfs:comment "Ei rolle med ansvar for gjennomføring av arbeid"@nn .
+  rdfs:comment "En rolle ansvarlig for gjennomføring av arbeid"@nb ;
+  rdfs:comment "Ei rolle ansvarleg for gjennomføring av arbeid"@nn .
 
 nva-role:ContactPerson a nva:Role ;
   rdfs:isDefinedBy nva-role: ;
@@ -95,8 +95,8 @@ nva-role:ContactPerson a nva:Role ;
   rdfs:label "Kontaktperson"@nb ;
   rdfs:label "Kontaktperson"@nn ;
   rdfs:comment "A role with responsibility for communication"@en ;
-  rdfs:comment "En rolle med ansvar for korrespondanse"@nb ;
-  rdfs:comment "Ei rolle med ansvar for korrespondanse"@nn .
+  rdfs:comment "En rolle ansvarlig for korrespondanse"@nb ;
+  rdfs:comment "Ei rolle ansvarleg for korrespondanse"@nn .
 
 nva-role:Creator a nva:Role ;
   rdfs:isDefinedBy nva-role: ;
@@ -114,8 +114,8 @@ nva-role:CuratorOrganizer a nva:Role ;
   rdfs:label "Kuratororganisatør"@nb ;
   rdfs:label "Kuratororganisatør"@nn ;
   rdfs:comment "A role with responsibility for administering, managing, organizing a collection"@en ;
-  rdfs:comment "En rolle med ansvar for administrasjon og organisering av en samling"@nb ;
-  rdfs:comment "Ei rolle med ansvar for administrasjon og organisering av ei samling"@nn .
+  rdfs:comment "En rolle ansvarlig for administrasjon og organisering av en samling"@nb ;
+  rdfs:comment "Ei rolle ansvarleg for administrasjon og organisering av ei samling"@nn .
 
 nva-role:DataCollector a nva:Role ;
   rdfs:isDefinedBy nva-role: ;
@@ -197,8 +197,8 @@ nva-role:HostingInstitution a nva:Role ;
   rdfs:label "Vertsinstitusjon"@nb ;
   rdfs:label "Vertsinstitusjon"@nn ;
   rdfs:comment "A role with responsibility for providing formal organizational responsibility for something"@en ;
-  rdfs:comment "En rolle med ansvar for å ha formell organisatorisk ansvar for noe"@nb ;
-  rdfs:comment "Ei rolle med ansvar for å ha formell organisatorisk ansvar for noko"@nn .
+  rdfs:comment "En rolle ansvarlig for å ha formell organisatorisk ansvar for noe"@nb ;
+  rdfs:comment "Ei rolle ansvarleg for å ha formell organisatorisk ansvar for noko"@nn .
 
 nva-role:Illustrator a nva:Role ;
   rdfs:isDefinedBy nva-role: ;
@@ -206,8 +206,8 @@ nva-role:Illustrator a nva:Role ;
   rdfs:label "Illustratør"@nb ;
   rdfs:label "Illustratør"@nn ;
   rdfs:comment "A role with responsibility for creating drawings, illustrations and designs"@en ;
-  rdfs:comment "En rolle med ansvar for å skape kreative tegninger, illustrasjoner og designer"@nb ;
-  rdfs:comment "Ei rolle med ansvar for å skape kreative teikninger, illustrasjonar og designar"@nn .
+  rdfs:comment "En rolle ansvarlig for å skape kreative tegninger, illustrasjoner og designer"@nb ;
+  rdfs:comment "Ei rolle ansvarleg for å skape kreative teikninger, illustrasjonar og designar"@nn .
 
 nva-role:InterviewSubject a nva:Role ;
   rdfs:isDefinedBy nva-role: ;
@@ -224,8 +224,8 @@ nva-role:Journalist a nva:Role ;
   rdfs:label "Journalist"@nb ;
   rdfs:label "Journalist"@nn ;
   rdfs:comment "A role with responsibility for creating news content"@en ;
-  rdfs:comment "En rolle med ansvar for å skape nyheter"@nb ;
-  rdfs:comment "Ei rolle med ansvar for å skape nyhenda"@nn .
+  rdfs:comment "En rolle ansvarlig for å rapportere nyheter"@nb ;
+  rdfs:comment "Ei rolle ansvarleg for å rapportere nyhenda"@nn .
 
 nva-role:Other a nva:Role ;
   rdfs:isDefinedBy nva-role: ;
@@ -242,8 +242,8 @@ nva-role:Producer a nva:Role ;
   rdfs:label "Produsent"@nb ;
   rdfs:label "Produsent"@nn ;
   rdfs:comment "A role with overall responsibility for the creation of content"@en ;
-  rdfs:comment "En rolle med ansvar for å skape innhold"@nb ;
-  rdfs:comment "Ei rolle med ansvar for å skape innhald"@nn .
+  rdfs:comment "En rolle ansvarlig for å skape innhold"@nb ;
+  rdfs:comment "Ei rolle ansvarleg for å skape innhald"@nn .
 
 nva-role:Presenter a nva:Role ;
   rdfs:isDefinedBy nva-role: ;
@@ -251,8 +251,8 @@ nva-role:Presenter a nva:Role ;
   rdfs:label "Programleder"@nb ;
   rdfs:label "Programleiar"@nn ;
   rdfs:comment "A role with responsibility for presenting content"@en ;
-  rdfs:comment "En rolle med ansvar for å legge frem innhold"@nb ;
-  rdfs:comment "Ei rolle med ansvar for å leggje fram innhald"@nn .
+  rdfs:comment "En rolle ansvarlig for å legge frem innhold"@nb ;
+  rdfs:comment "Ei rolle ansvarleg for å leggje fram innhald"@nn .
 
 nva-role:Participant a nva:Role ;
   rdfs:isDefinedBy nva-role: ;
@@ -347,8 +347,8 @@ nva-role:Researcher a nva:Role ;
   rdfs:label "Forsker"@nb ;
   rdfs:label "Forskar"@nn ;
   rdfs:comment "A role with responsibility for research"@en ;
-  rdfs:comment "En rolle med ansvar for forskning"@nb ;
-  rdfs:comment "Ei rolle med ansvar for forsking"@nn .
+  rdfs:comment "En rolle ansvarlig for forskning"@nb ;
+  rdfs:comment "Ei rolle ansvarleg for forsking"@nn .
 
 # This is actually an organization, not a role
 
@@ -358,8 +358,8 @@ nva-role:ResearchGroup a nva:Role ;
   rdfs:label "Forskningsgruppe"@nb ;
   rdfs:label "Forskningsgruppe"@nn ;
   rdfs:comment "A role with responsibility for co-ordinated research"@en ;
-  rdfs:comment "En rolle med ansvar for samordnet forskning"@nb ;
-  rdfs:comment "Ei rolle med ansvar for samordna forsking"@nn .
+  rdfs:comment "En rolle ansvarlig for samordnet forskning"@nb ;
+  rdfs:comment "Ei rolle ansvarleg for samordna forsking"@nn .
 
 # Not sure if this is a role or not
 
@@ -369,8 +369,8 @@ nva-role:RightsHolder a nva:Role ;
   rdfs:label "Opphavsrettsinnhaver"@nb ;
   rdfs:label "Opphavsrettsinnhavar"@nn ;
   rdfs:comment "A role with legal ownership of something"@en ;
-  rdfs:comment "En rolle med juridisk eierskap av noe"@nb ;
-  rdfs:comment "Ei rolle med juridisk eigarskap av noko"@nn .
+  rdfs:comment "En rolle som har juridisk eierskap av noe"@nb ;
+  rdfs:comment "Ei rolle som har juridisk eigarskap av noko"@nn .
 
 # Is this different from "Funder"?
 
@@ -380,8 +380,8 @@ nva-role:Sponsor a nva:Role ;
   rdfs:label "Sponsor"@nb ;
   rdfs:label "Sponsor"@nn ;
   rdfs:comment "A role with responsibility for financing via donation"@en ;
-  rdfs:comment "En rolle med ansvar for finansiering gjennom donasjon"@nb ;
-  rdfs:comment "Ei rolle med ansvar for finansiering gjennom donasjon"@nn .
+  rdfs:comment "En rolle ansvarlig for finansiering gjennom donasjon"@nb ;
+  rdfs:comment "Ei rolle ansvarleg for finansiering gjennom donasjon"@nn .
 
 nva-role:Supervisor a nva:Role ;
   rdfs:isDefinedBy nva-role: ;
@@ -389,8 +389,8 @@ nva-role:Supervisor a nva:Role ;
   rdfs:label "Veileder"@nb ;
   rdfs:label "Rettleiar"@nn ;
   rdfs:comment "A role with responsibility supervising something"@en ;
-  rdfs:comment "En rolle med ansvar for veiledning av noe"@nb ;
-  rdfs:comment "Ei rolle med ansvar for rettleiing av noko"@nn .
+  rdfs:comment "En rolle ansvarlig for veiledning av noe"@nb ;
+  rdfs:comment "Ei rolle ansvarleg for rettleiing av noko"@nn .
 
 nva-role:WorkPackageLeader a nva:Role ;
   rdfs:isDefinedBy nva-role: ;
@@ -398,5 +398,5 @@ nva-role:WorkPackageLeader a nva:Role ;
   rdfs:label "Arbeidspakkeleder"@nb ;
   rdfs:label "Arbeidspakkeleiar"@nn ;
   rdfs:comment "A role with responsibility for administering a subpart of a project"@en ;
-  rdfs:comment "En rolle med ansvar for administrering av en delmengde av et prosjekt"@nb ;
-  rdfs:comment "Ei rolle med ansvar for administrering av ei delmengde av eit prosjekt"@nn .
+  rdfs:comment "En rolle ansvarlig for administrering av en delmengde av et prosjekt"@nb ;
+  rdfs:comment "Ei rolle ansvarleg for administrering av ei delmengde av eit prosjekt"@nn .
