@@ -1,0 +1,137 @@
+@prefix customer: <http://bibsysdev.github.io/src/customer-ontology#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix nva: <https://example.org/todo#> .
+
+customer:VocabularySetting a rdfs:Class ;
+  rdfs:label "VocabularySetting" ;
+  rdfs:comment "A set of customer-defined options defining the allowed usage of a controlled vocabulary" ;
+  rdfs:isDefinedBy customer: .
+
+customer:CustomerCollection a rdfs:Class ;
+  rdfs:label "CustomerCollection" ;
+  rdfs:comment "A collection of organizations that are part of the NVA consortium" ;
+  rdfs:isDefinedBy customer: .
+
+customer:customer a rdf:Property ;
+  rdfs:label "customer" ;
+  rdfs:comment "A member organization of the NVA consortium" ;
+  rdfs:domain customer:CustomerCollection ;
+  rdfs:range nva:Organization ;
+  rdfs:isDefinedBy customer: .
+
+customer:Disabled a rdfs:Class ;
+  rdfs:label "Disabled" ;
+  rdfs:comment "A value denoting that a controlled vocabulary is not to be used" ;
+  rdfs:isDefinedBy customer: ;
+  rdfs:subClassOf customer:VocabularySettings .
+
+customer:Allowed a rdfs:Class ;
+  rdfs:label "Allowed" ;
+  rdfs:comment "A value denoting that a controlled vocabulary may be used" ;
+  rdfs:isDefinedBy customer: ;
+  rdfs:subClassOf customer:VocabularySettings .
+
+customer:Default a rdfs:Class ;
+  rdfs:label "Default" ;
+  rdfs:comment "A value denoting that a controlled vocabulary may be used and should be displayed by default" ;
+  rdfs:isDefinedBy customer: ;
+  rdfs:subClassOf customer:Allowed .
+
+customer:legalName a rdf:Property ;
+  rdfs:label "legalName" ;
+  rdfs:comment "A literal string by which an organization is known in official registers" ;
+  rdfs:isDefinedBy customer: ;
+  rdfs:isSubPropertyOf rdfs:label ;
+  rdfs:domain nva:Organization ;
+  rdfs:range xsd:string .
+
+customer:displayName a rdf:Property ;
+  rdfs:label "displayName" ;
+  rdfs:comment "A literal string to be used when presenting an organization as text to users" ;
+  rdfs:isDefinedBy customer: ;
+  rdfs:isSubPropertyOf rdfs:label ;
+  rdfs:domain nva:Organization ;
+  rdfs:range xsd:string .
+
+customer:shortName a rdf:Property ;
+  rdfs:label "shortName" ;
+  rdfs:comment "An abbreviation of an organization name" ;
+  rdfs:isDefinedBy customer: ;
+  rdfs:isSubPropertyOf rdfs:label ;
+  rdfs:domain nva:Organization ;
+  rdfs:range xsd:string .
+
+customer:archiveName a rdf:Property ;
+  rdfs:label "archiveName" ;
+  rdfs:comment "A name used when describing the set of data owned by an organization" ;
+  rdfs:isDefinedBy customer: ;
+  rdfs:isSubPropertyOf rdfs:label ;
+  rdfs:domain nva:Organization ;
+  rdfs:range xsd:string .
+
+customer:cname a rdf:Property ;
+  rdfs:label "cname" ;
+  rdfs:comment "A Canonical Name (DNS) that should resolve the set of data owned by an organization" ;
+  rdfs:isDefinedBy customer: ;
+  rdfs:domain nva:Organization ;
+  rdfs:range xsd:string .
+
+customer:institutionDns a rdf:Property ;
+  rdfs:label "institutionDns" ;
+  rdfs:comment "A Domain Name System used by an organization" ;
+  rdfs:isDefinedBy customer: ;
+  rdfs:domain nva:Organization ;
+  rdfs:range xsd:string .
+
+customer:feideOrganizationId a rdf:Property ;
+  rdfs:label "feideOrganizationId" ;
+  rdfs:comment "A Feide ID of an organization" ;
+  rdfs:isDefinedBy customer: ;
+  rdfs:domain nva:Organization ;
+  rdfs:range xsd:string .
+
+customer:cristinId a rdf:Property ;
+  rdfs:label "cristinId" ;
+  rdfs:comment "An identifier in the Cristin organization register associated with an organization" ;
+  rdfs:isDefinedBy customer: ;
+  rdfs:domain nva:Organization ;
+  rdfs:range xsd:string .
+
+customer:vocabularySetting a rdf:Property ;
+  rdfs:label "vocabularySetting" ;
+  rdfs:comment "A resource defining the usage of a controlled vocabulary" ;
+  rdfs:isDefinedBy customer: ;
+  rdfs:domain nva:Organization ;
+  rdfs:range customer:VocabularySetting .
+
+customer:vocabularyUsage a rdf:Property ;
+  rdfs:label "vocabularyUsage" ;
+  rdfs:comment "A definition of the allowed usage of a controlled vocabulary" ;
+  rdfs:isDefinedBy customer: ;
+  rdfs:domain customer:VocabularySetting ;
+  rdfs:range customer:VocabularyStatus .
+
+customer:publicationWorkflow a rdf:Property ;
+  rdfs:label "publicationWorkflow" ;
+  rdfs:comment "The chosen publication workflow for the customer" ;
+  rdfs:isDefinedBy customer: ;
+  rdfs:domain customer:Organization ;
+  rdfs:range customer:PublicationWorkflow .
+
+customer:PublicationWorkflow a rdfs:Class ;
+  rdfs:label "PublicationWorkflow" ;
+  rdfs:comment "A definition of a type of workflow for publishing resources" ;
+  rdfs:isDefinedBy customer: .
+
+customer:RegistratorPublishesMetadataOnly a rdfs:Class ;
+  rdfs:label "RegistratorPublishesMetadataOnly" ;
+  rdfs:subClassOf customer:PublicationWorkflow ;
+  rdfs:comment "A workflow where Registrators can publish the description of a resource, but requires approval from a Curator to publish files" .
+
+customer:RegistratorPublishesMetadataAndFiles a rdfs:Class ;
+  rdfs:label "RegistratorPublishesMetadataAndFiles" ;
+  rdfs:subClassOf customer:PublicationWorkflow ;
+  rdfs:comment "A workflow where Registrators can publish the description of a resource and associated files" .
