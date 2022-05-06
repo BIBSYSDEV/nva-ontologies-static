@@ -58,6 +58,41 @@ paths:
           $ref: '#/components/responses/406'
         500:
           $ref: '#/components/responses/500'
+  /file/{name}:
+    get:
+      x-amazon-apigateway-integration:
+        uri:
+          Fn::Sub: arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${OntologyService.Arn}/invocations
+        httpMethod: POST
+        type: "AWS_PROXY"
+      tags:
+        - Ontology
+      summary: Get S3 object by name
+      description: Returns the requested S3 object
+      operationId: get
+      parameters:
+        - name: name
+          in: path
+          description: Name of the file to return
+          required: true
+          schema:
+            type: string
+          example: 'sample_file.txt'
+      responses:
+        200:
+          description: The requested file object
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+        404:
+          $ref: '#/components/responses/404'
+        405:
+          $ref: '#/components/responses/405'
+        406:
+          $ref: '#/components/responses/406'
+        500:
+          $ref: '#/components/responses/500'
 components:
   responses:
     404:

@@ -14,9 +14,9 @@ Globals:
 
 Parameters:
   ApiDomain:
-    Type: 'AWS::SSM::Parameter::Value<String>'
+    Type: String
     Description: Custom API to connect this lambda to
-    Default: /NVA/ApiDomain
+    Default: api.sandbox.nva.aws.unit.no
   CustomDomainBasePath:
     Type: String
     Description: Base path mapping in ApiDomain
